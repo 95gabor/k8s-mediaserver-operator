@@ -40,6 +40,7 @@ sonarr:
     image: docker.io/linuxserver/sonarr
     nodeSelector: {}
     port: 8989
+    extraEnv: []
   service:
     type: ClusterIP
     port: 8989
@@ -72,6 +73,7 @@ radarr:
     image: docker.io/linuxserver/radarr
     nodeSelector: {}
     port: 7878
+    extraEnv: []
   service:
     type: ClusterIP
     port: 7878
