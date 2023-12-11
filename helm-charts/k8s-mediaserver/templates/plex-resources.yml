@@ -8,7 +8,15 @@ metadata:
 data:
   PGID: "{{ .Values.general.pgid }}"
   PUID: "{{ .Values.general.puid }}"
+---
+{{ if and (.Values.plex.claim) (not .Values.plex.externalSecret) }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: plex-claim
+data:
   PLEX_CLAIM: {{ .Values.plex.claim }}
+{{ end }}
 ---
 ### DEPLOYMENT
 apiVersion: apps/v1
@@ -49,6 +57,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: plex-config
+            {{ if .Values.plex.externalSecret }}
+            - secretRef:
+                name: {{ .Values.plex.externalSecret }}
+            {{ end }}
           image: "{{ .Values.plex.container.image }}:{{ .Values.plex.container.tag | default .Values.general.image_tag }}"
           imagePullPolicy: Always
           readinessProbe:

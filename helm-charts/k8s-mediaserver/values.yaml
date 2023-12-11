@@ -249,6 +249,7 @@ prowlarr:
 plex:
   enabled: true
   claim: "CHANGEME"
+  externalSecret: null
   replicaCount: 1
   container:
     image: docker.io/linuxserver/plex
