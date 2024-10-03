@@ -102,22 +102,23 @@ spec:
     app: jellyfin
 
 ---
-{{ if .Values.jellyfin.service.extraLBService }}
+{{ if .Values.jellyfin.service.extraLbService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: jellyfin-lb
   annotations:
-    {{- include .Values.jellyfin.service.extraLBService.annotations . | nindent 4 }}
+    {{- include .Values.jellyfin.service.extraLbService.annotations . | nindent 4 }}
   labels:
     {{- include "k8s-mediaserver.labels" . | nindent 4 }}
 spec:
   type: LoadBalancer
   ports:
-    - port: {{ .Values.jellyfin.service.port }}
+    - port: {{ .Values.jellyfin.service.extraLbService.port | default .Values.jellyfin.service.port }}
       targetPort: {{ .Values.jellyfin.container.port }}
       protocol: TCP
       name: jellyfin-port
+  loadBalancerIP: {{ .Values.jellyfin.service.extraLbService.IP }}
   selector:
     app: jellyfin
 {{ end }}

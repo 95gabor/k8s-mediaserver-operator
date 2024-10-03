@@ -45,9 +45,12 @@ sonarr:
     type: ClusterIP
     port: 8989
     nodePort:
-    extraLBService: false
-    extraLBAnnotations: {}
     # Defines an additional LB service, requires cloud provider service or MetalLB
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}
@@ -79,8 +82,11 @@ radarr:
     port: 7878
     nodePort:
     # Defines an additional LB service, requires cloud provider service or MetalLB
-    extraLBService: false
-    extraLBAnnotations: {}
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}
@@ -108,9 +114,12 @@ jackett:
     type: ClusterIP
     port: 9117
     nodePort:
-    extraLBService: false
-    extraLBAnnotations: {}
     # Defines an additional LB service, requires cloud provider service or MetalLB
+      extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}
@@ -227,8 +236,11 @@ prowlarr:
     type: ClusterIP
     port: 9696
     nodePort:
-    extraLBService: false
-    extraLBAnnotations: {}
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}
@@ -260,8 +272,11 @@ plex:
     port: 32400
     nodePort:
     # Defines an additional LB service, requires cloud provider service or MetalLB
-    extraLBService: false
-    extraLBAnnotations: {}
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}
@@ -296,7 +311,11 @@ jellyfin:
     port: 8096
     nodePort:
     # Defines an additional LB service, requires cloud provider service or MetalLB
-    extraLBService: false
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP: ""
   ingress:
     enabled: true
     annotations: {}

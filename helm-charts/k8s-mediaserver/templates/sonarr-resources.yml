@@ -172,12 +172,12 @@ spec:
   selector:
     app: sonarr
 ---
-{{ if .Values.sonarr.service.extraLBService }}
+{{ if .Values.sonarr.service.extraLbService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: sonarr-lb
-  {{- with .Values.sonarr.service.extraLBAnnotations }}
+  {{- with .Values.sonarr.service.extraLbService.annotations }}
   annotations:
     {{- . | toYaml | nindent 4 }}
   {{- end }}
@@ -186,10 +186,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: {{ .Values.sonarr.service.port }}
+    - port: {{ .Values.sonarr.service.extraLbService.port | default .Values.sonarr.service.port }}
       targetPort: {{ .Values.sonarr.container.port }}
       protocol: TCP
       name: sonarr-port
+  loadBalancerIP: {{ .Values.sonarr.service.extraLbService.IP }}
   selector:
     app: sonarr
 {{ end }}

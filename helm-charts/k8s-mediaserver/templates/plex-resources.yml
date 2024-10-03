@@ -141,12 +141,12 @@ spec:
     app: plex
 
 ---
-{{ if .Values.plex.service.extraLBService }}
+{{ if .Values.plex.service.extraLbService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: plex-lb
-  {{- with .Values.plex.service.extraLBAnnotations }}
+  {{- with .Values.plex.service.extraLbService.annotations }}
   annotations:
     {{- . | toYaml | nindent 4 }}
   {{- end }}
@@ -155,10 +155,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: {{ .Values.plex.service.port }}
+    - port: {{ .Values.plex.service.extraLbService.port | default .Values.plex.service.port }}
       targetPort: {{ .Values.plex.container.port }}
       protocol: TCP
       name: plex-port
+  loadBalancerIP: {{ .Values.plex.service.extraLbService.IP }}
   selector:
     app: plex
 {{ end }}

@@ -174,12 +174,12 @@ spec:
     app: radarr
 
 ---
-{{ if .Values.radarr.service.extraLBService }}
+{{ if .Values.radarr.service.extraLbService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: radarr-lb
-  {{- with .Values.radarr.service.extraLBAnnotations }}
+  {{- with .Values.radarr.service.extraLbService.annotations }}
   annotations:
     {{- . | toYaml | nindent 4 }}
   {{- end }}
@@ -188,10 +188,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: {{ .Values.radarr.service.port }}
+    - port: {{ .Values.radarr.service.extraLbService.port | default .Values.radarr.service.port }}
       targetPort: {{ .Values.radarr.container.port }}
       protocol: TCP
       name: radarr-port
+  loadBalancerIP: {{ .Values.radarr.service.extraLbService.IP }}
   selector:
     app: radarr
 {{ end }}
