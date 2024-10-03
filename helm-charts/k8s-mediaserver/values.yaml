@@ -50,7 +50,7 @@ sonarr:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
@@ -86,7 +86,7 @@ radarr:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
@@ -115,11 +115,11 @@ jackett:
     port: 9117
     nodePort:
     # Defines an additional LB service, requires cloud provider service or MetalLB
-      extraLbService:
+    extraLbService:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
@@ -236,11 +236,12 @@ prowlarr:
     type: ClusterIP
     port: 9696
     nodePort:
+    # Defines an additional LB service, requires cloud provider service or MetalLB
     extraLbService:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
@@ -276,7 +277,7 @@ plex:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
@@ -315,7 +316,7 @@ jellyfin:
       enabled: false
       annotations: {}
       port: 80
-      loadBalancerIP: ""
+      loadBalancerIP:
   ingress:
     enabled: true
     annotations: {}
