@@ -152,8 +152,11 @@ transmission:
       # if type is NodePort, nodePort must be set
       nodePort:
       # Defines an additional LB service, requires cloud provider service or MetalLB
-      extraLBService: false
-      extraLBAnnotations: {}
+      extraLbService:
+        enabled: false
+        annotations: {}
+        port: 80
+        loadBalancerIP:
     peer:
       type: ClusterIP
       port: 51413
