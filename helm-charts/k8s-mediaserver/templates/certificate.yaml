@@ -37,6 +37,10 @@ spec:
   privateKey:
     {{- toYaml . | nindent 4 }}
   {{- end }}
+  {{- with .Values.general.certificate.keystores }}
+  keystores:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   {{- with .Values.general.certificate.usages }}
   usages:
     {{- toYaml . | nindent 4 }}

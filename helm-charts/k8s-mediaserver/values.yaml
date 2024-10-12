@@ -53,6 +53,12 @@ general:
       encoding: PKCS1
       algorithm: RSA
       size: 2048
+    keystores:
+      pkcs12:
+        create: true
+        passwordSecretRef:
+          key: password
+          name: cert-password
     annotations: {}
     usages: []
 
