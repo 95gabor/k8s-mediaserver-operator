@@ -33,6 +33,28 @@ general:
   ingress:
     ingressClassName: ""
   nodeSelector: {}
+  # TLS certificate configuration via cert-manager
+  certificate:
+    enabled: false
+    secretName: k8s-mediaserver-tls
+    domain: plex.example.com
+    additionalHosts:
+      - plex.example.com
+      - sonarr.example.com
+      - radarr.example.com
+    duration: ""
+    renewBefore: ""
+    issuer:
+      group: ""
+      kind: ""
+      name: ""
+    privateKey:
+      rotationPolicy: Never
+      encoding: PKCS1
+      algorithm: RSA
+      size: 2048
+    annotations: {}
+    usages: []
 
 sonarr:
   enabled: true

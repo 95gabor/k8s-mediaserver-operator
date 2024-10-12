@@ -1,0 +1,45 @@
+{{- if and (.Capabilities.APIVersions.Has "cert-manager.io/v1") .Values.general.certificate.enabled -}}
+---
+### CERTIFICATE
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  {{- with .Values.general.certificate.annotations }}
+  annotations:
+    {{- range $key, $value := . }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+  name: k8s-mediaserver
+  labels:
+    {{- include "k8s-mediaserver.labels" . | nindent 4 }}
+spec:
+  secretName: {{ .Values.general.certificate.secretName }}
+  commonName: {{ .Values.general.certificate.domain | quote }}
+  dnsNames:
+    - {{ .Values.general.certificate.domain | quote }}
+    {{- range .Values.general.certificate.additionalHosts }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- with .Values.general.certificate.duration }}
+  duration: {{ . | quote }}
+  {{- end }}
+  {{- with .Values.general.certificate.renewBefore }}
+  renewBefore: {{ . | quote }}
+  {{- end }}
+  issuerRef:
+    {{- with .Values.general.certificate.issuer.group }}
+    group: {{ . | quote }}
+    {{- end }}
+    kind: {{ .Values.general.certificate.issuer.kind | quote }}
+    name: {{ .Values.general.certificate.issuer.name | quote }}
+  {{- with .Values.general.certificate.privateKey }}
+  privateKey:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.general.certificate.usages }}
+  usages:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+---
+{{- end }}
