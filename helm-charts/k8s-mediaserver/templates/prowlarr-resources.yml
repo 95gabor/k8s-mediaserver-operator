@@ -119,6 +119,10 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- with .Values.general.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if eq .Values.general.podDistribution "cluster" }}
       affinity:
         podAffinity:
