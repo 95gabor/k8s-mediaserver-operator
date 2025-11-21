@@ -58,7 +58,7 @@ spec:
             secretName: {{ .Values.general.certificate.secretName }}  # Reference to the generated secret
         {{- end }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: plex
           envFrom:
             - configMapRef:
                 name: plex-config

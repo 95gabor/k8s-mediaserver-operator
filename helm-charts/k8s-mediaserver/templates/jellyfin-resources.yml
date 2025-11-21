@@ -42,7 +42,7 @@ spec:
             claimName: {{ .Values.jellyfin.volume.name }}
         {{- end }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: jellyfin
           envFrom:
             - configMapRef:
                 name: jellyfin-config

@@ -67,7 +67,7 @@ spec:
             runAsUser: {{ .Values.general.puid }}
             runAsGroup: {{ .Values.general.pgid }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: sonarr
           envFrom:
             - configMapRef:
                 name: sonarr-config

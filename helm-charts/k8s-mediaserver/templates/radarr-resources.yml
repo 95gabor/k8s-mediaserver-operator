@@ -68,7 +68,7 @@ spec:
             runAsUser: {{ .Values.general.puid }}
             runAsGroup: {{ .Values.general.pgid }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: radarr
           envFrom:
             - configMapRef:
                 name: radarr-config
