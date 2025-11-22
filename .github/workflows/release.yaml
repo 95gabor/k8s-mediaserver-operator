@@ -44,13 +44,14 @@ jobs:
 
       - name: Add Helm repositories for dependencies
         run: |
-          helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
-          helm repo update
+          helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts || echo "Repository might not exist yet, continuing..."
+          helm repo update || echo "Repository update failed, continuing..."
 
       - name: Update umbrella chart dependencies
+        continue-on-error: true
         run: |
           cd charts/k8s-mediaserver
-          helm dependency update
+          helm dependency update || echo "Failed to update umbrella chart dependencies, continuing without umbrella chart..."
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
