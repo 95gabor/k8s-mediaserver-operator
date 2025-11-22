@@ -60,7 +60,9 @@ spec:
             {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
+        {{- if not .Values.general.initContainer.runAsRoot }}
         runAsNonRoot: true
+        {{- end }}
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -102,14 +104,16 @@ spec:
               containerPort: {{ .Values.container.port }}
               protocol: TCP
           volumeMounts:
-          {{- if .Values.volume }}
+            - name: tmp
+              mountPath: /tmp
+            {{- if .Values.volume }}
             - name: {{ .Values.volume.name }}
               mountPath: /app/config
-          {{- else }}
+            {{- else }}
             - name: mediaserver-volume
               mountPath: "/app/config"
               subPath: "{{ .Values.general.storage.subPaths.config }}/seerr"
-          {{- end }}
+            {{- end }}
           {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
@@ -128,6 +132,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.volume.name }}
         {{- end }}
+        - name: tmp
+          emptyDir:
+            medium: Memory
       {{- with merge .Values.container.nodeSelector .Values.general.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

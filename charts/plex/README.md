@@ -1,6 +1,6 @@
 # plex
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.42.2](https://img.shields.io/badge/AppVersion-1.42.2-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.42.2](https://img.shields.io/badge/AppVersion-1.42.2-informational?style=flat-square)
 
 A Helm chart for Plex Media Server
 
@@ -54,10 +54,10 @@ helm uninstall plex -n plex
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | general.initContainer.tag | float | `24.04` |  |
 | general.nodeSelector | object | `{}` |  |
-| general.pgid | int | `1000` |  |
+| general.pgid | int | `1001` |  |
 | general.plex_ingress_host | string | `"k8s-plex.k8s.test"` |  |
 | general.podDistribution | string | `"cluster"` |  |
-| general.puid | int | `1000` |  |
+| general.puid | int | `911` |  |
 | general.storage.accessMode | string | `""` |  |
 | general.storage.customVolume | bool | `false` |  |
 | general.storage.pvcName | string | `"mediaserver-pvc"` |  |

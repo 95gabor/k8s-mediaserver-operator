@@ -9,8 +9,8 @@ general:
   initContainer:
     image: docker.io/ubuntu
     tag: 24.04
-  puid: 1000
-  pgid: 1000
+  puid: 911
+  pgid: 1001
   storage:
     customVolume: false
     pvcName: mediaserver-pvc

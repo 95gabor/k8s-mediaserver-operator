@@ -33,6 +33,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.volume.name }}
         {{- end }}
+        - name: tmp
+          emptyDir:
+            medium: Memory
         {{- if and (.Capabilities.APIVersions.Has "cert-manager.io/v1") .Values.general.certificate.enabled }}
         - name: tls-secret
           secret:
@@ -40,7 +43,9 @@ spec:
         {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
+        {{- if not .Values.general.initContainer.runAsRoot }}
         runAsNonRoot: true
+        {{- end }}
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -76,14 +81,16 @@ spec:
               containerPort: {{ .Values.container.port }}
               protocol: TCP
           volumeMounts:
-          {{- if .Values.volume }}
+            - name: tmp
+              mountPath: /tmp
+            {{- if .Values.volume }}
             - name: {{ .Values.volume.name }}
               mountPath: /config
-          {{- else }}
+            {{- else }}
             - name: mediaserver-volume
               mountPath: /config
               subPath: "{{ .Values.general.storage.subPaths.config }}/plex"
-          {{- end }}
+            {{- end }}
             - name: mediaserver-volume
               mountPath: /movies
               subPath: "{{ .Values.general.storage.subPaths.movies }}"

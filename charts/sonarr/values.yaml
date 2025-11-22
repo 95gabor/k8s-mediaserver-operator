@@ -12,8 +12,8 @@ general:
     # Note: When false, init container cannot chown root-owned files
     # fsGroup will handle group ownership automatically
     runAsRoot: true
-  puid: 1000
-  pgid: 1000
+  puid: 911
+  pgid: 1001
   storage:
     customVolume: false
     pvcName: mediaserver-pvc

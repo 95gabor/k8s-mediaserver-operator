@@ -31,9 +31,14 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.volume.name }}
         {{- end }}
+        - name: tmp
+          emptyDir:
+            medium: Memory
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
+        {{- if not .Values.general.initContainer.runAsRoot }}
         runAsNonRoot: true
+        {{- end }}
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -62,14 +67,16 @@ spec:
               containerPort: {{ .Values.container.port }}
               protocol: TCP
           volumeMounts:
-          {{- if .Values.volume }}
+            - name: tmp
+              mountPath: /tmp
+            {{- if .Values.volume }}
             - name: {{ .Values.volume.name }}
               mountPath: /config
-          {{- else }}
+            {{- else }}
             - name: mediaserver-volume
               mountPath: /config
               subPath: "{{ .Values.general.storage.subPaths.config }}/jellyfin"
-          {{- end }}
+            {{- end }}
             - name: mediaserver-volume
               mountPath: /movies
               subPath: "{{ .Values.general.storage.subPaths.movies }}"
