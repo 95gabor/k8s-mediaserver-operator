@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  release:
+  release-service-charts:
     permissions:
       contents: write # to push chart release and create a release (helm/chart-releaser-action)
       packages: write # needed for ghcr access
@@ -60,9 +60,45 @@ jobs:
           CR_GENERATE_RELEASE_NOTES: true
           CR_SKIP_EXISTING: "true"
 
-      - name: Restore umbrella chart
+      - name: Wait for index propagation
+        run: sleep 10
+
+  release-umbrella:
+    needs: release-service-charts
+    permissions:
+      contents: write # to push chart release and create a release (helm/chart-releaser-action)
+      packages: write # needed for ghcr access
+      id-token: write # needed for keyless signing
+      pages: write # needed for GitHub Pages update
+
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - uses: pre-commit/action@v3.0.1
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
+
+      - name: Configure Git
         run: |
-          mv /tmp/k8s-mediaserver charts/k8s-mediaserver || echo "Umbrella chart not found, skipping..."
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3.5
+        with:
+          version: v3.12.0
+
+      - name: Add Helm repositories for dependencies
+        run: |
+          helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts || echo "Repository might not exist yet, continuing..."
+          helm repo update || echo "Repository update failed, continuing..."
 
       - name: Update umbrella chart dependencies
         continue-on-error: true
