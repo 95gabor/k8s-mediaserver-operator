@@ -1,6 +1,6 @@
 # prowlarr
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
 
 A Helm chart for Prowlarr
 
@@ -51,9 +51,9 @@ helm uninstall prowlarr -n prowlarr
 | general.initContainer.runAsRoot | bool | `true` |  |
 | general.initContainer.tag | float | `24.04` |  |
 | general.nodeSelector | object | `{}` |  |
-| general.pgid | int | `1000` |  |
+| general.pgid | int | `1001` |  |
 | general.podDistribution | string | `"cluster"` |  |
-| general.puid | int | `1000` |  |
+| general.puid | int | `911` |  |
 | general.storage.accessMode | string | `""` |  |
 | general.storage.customVolume | bool | `false` |  |
 | general.storage.pvcName | string | `"mediaserver-pvc"` |  |
