@@ -3,7 +3,7 @@ entries:
   jackett:
   - apiVersion: v2
     appVersion: 0.24.338
-    created: "2025-11-22T16:20:40.803458841Z"
+    created: "2025-11-22T17:35:17.281233+01:00"
     description: A Helm chart for Jackett
     digest: 5b25071baf2f56ed4123bd00fa9eded548bd7556c04b8e54f9a34bb3c1667f5b
     home: https://github.com/Jackett/Jackett
@@ -22,11 +22,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.5/jackett-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 0.24.338
-    created: "2025-11-22T13:55:17.237645928Z"
+    created: "2025-11-22T17:35:17.280852+01:00"
     description: A Helm chart for Jackett
     digest: 9055adb89c3a356a8d91273d42335f694160ac7cce7ae1740052c101ed05c595
     home: https://github.com/Jackett/Jackett
@@ -45,11 +45,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.3/jackett-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.24.338
-    created: "2025-11-22T13:42:20.52012576Z"
+    created: "2025-11-22T17:35:17.280631+01:00"
     description: A Helm chart for Jackett
     digest: c4bb16a06569bbde2947a969a5c3c0f4b3f954c16b3c6df327efe6f660685380
     home: https://github.com/Jackett/Jackett
@@ -68,11 +68,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.2/jackett-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.24.338
-    created: "2025-11-22T12:40:49.183349688Z"
+    created: "2025-11-22T17:35:17.280415+01:00"
     description: A Helm chart for Jackett
     digest: 8e0635cc663cd7cd0af6bdec70c80fc5e7a2840f585d5e0c1a3cc76f741c0825
     home: https://github.com/Jackett/Jackett
@@ -91,12 +91,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.1/jackett-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.1.tgz
     version: 0.1.1
   jellyfin:
   - apiVersion: v2
     appVersion: 10.11.3
-    created: "2025-11-22T16:20:40.990542694Z"
+    created: "2025-11-22T17:35:17.282244+01:00"
     description: A Helm chart for Jellyfin
     digest: 64e8c9910926c5095ccc217b50c4a3461ee19eb82d3c64d09e330d40dc4a95ea
     home: https://jellyfin.org/
@@ -115,11 +115,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.5/jellyfin-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 10.11.3
-    created: "2025-11-22T13:42:20.678675614Z"
+    created: "2025-11-22T17:35:17.282022+01:00"
     description: A Helm chart for Jellyfin
     digest: 5c31f25628c9ebe94a770b46ccc6edf87e35a66c93bc4f0617f87ccaba07c5bf
     home: https://jellyfin.org/
@@ -138,11 +138,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.2/jellyfin-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 10.11.3
-    created: "2025-11-22T12:40:49.377316293Z"
+    created: "2025-11-22T17:35:17.281757+01:00"
     description: A Helm chart for Jellyfin
     digest: 7f5542ce70921b624948831f1e0b14036bb7560c479871c74bbe273ac8f2bc0f
     home: https://jellyfin.org/
@@ -161,12 +161,79 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.1/jellyfin-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.1.tgz
     version: 0.1.1
   k8s-mediaserver:
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2025-11-22T13:56:13.107925767Z"
+    created: "2025-11-22T17:35:17.293635+01:00"
+    dependencies:
+    - condition: sonarr.enabled
+      name: sonarr
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: radarr.enabled
+      name: radarr
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: jackett.enabled
+      name: jackett
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: prowlarr.enabled
+      name: prowlarr
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: transmission.enabled
+      name: transmission
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: sabnzbd.enabled
+      name: sabnzbd
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: plex.enabled
+      name: plex
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: jellyfin.enabled
+      name: jellyfin
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    - condition: seerr.enabled
+      name: seerr
+      repository: https://95gabor.github.io/k8s-mediaserver-charts
+      version: 0.1.5
+    description: A Helm chart for Kubernetes mediaserver (umbrella chart)
+    digest: f2eac69cbae9be4cca07db98fbb4c1155919a40baa9949b370d5efb009ddeeaf
+    home: https://github.com/95gabor/k8s-mediaserver-charts
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+    keywords:
+    - media
+    - server
+    - plex
+    - jellyfin
+    - sonarr
+    - radarr
+    - transmission
+    - sabnzbd
+    - jackett
+    - prowlarr
+    - seerr
+    - streaming
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: k8s-mediaserver
+    sources:
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.7.tgz
+    version: 0.10.7
+  - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2025-11-22T17:35:17.291514+01:00"
     dependencies:
     - condition: sonarr.enabled
       name: sonarr
@@ -229,11 +296,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.5/k8s-mediaserver-0.10.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.5.tgz
     version: 0.10.5
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2025-11-22T13:43:27.86812241Z"
+    created: "2025-11-22T17:35:17.288875+01:00"
     dependencies:
     - condition: sonarr.enabled
       name: sonarr
@@ -296,11 +363,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.4/k8s-mediaserver-0.10.4.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.4.tgz
     version: 0.10.4
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2025-11-22T13:42:20.829217033Z"
+    created: "2025-11-22T17:35:17.286927+01:00"
     dependencies:
     - condition: sonarr.enabled
       name: sonarr
@@ -363,11 +430,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.3/k8s-mediaserver-0.10.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.3.tgz
     version: 0.10.3
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2025-11-22T12:40:49.607000628Z"
+    created: "2025-11-22T17:35:17.284387+01:00"
     dependencies:
     - condition: sonarr.enabled
       name: sonarr
@@ -430,12 +497,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.2/k8s-mediaserver-0.10.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/k8s-mediaserver-0.10.2.tgz
     version: 0.10.2
   plex:
   - apiVersion: v2
     appVersion: 1.42.2
-    created: "2025-11-22T16:20:41.185298257Z"
+    created: "2025-11-22T17:35:17.294272+01:00"
     description: A Helm chart for Plex Media Server
     digest: 5541975f84d6291ecde88b2ecba8d6cf3eb544c1e94c07ba370b24acbfecc759
     home: https://www.plex.tv/
@@ -454,11 +521,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.5/plex-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.42.2
-    created: "2025-11-22T13:42:20.97992302Z"
+    created: "2025-11-22T17:35:17.294066+01:00"
     description: A Helm chart for Plex Media Server
     digest: 3f15929a9222ff31178b763d86f626f2ee8dd9aa840917ba0b69cf4b7c4a24ec
     home: https://www.plex.tv/
@@ -477,11 +544,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.2/plex-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.42.2
-    created: "2025-11-22T12:40:49.810657551Z"
+    created: "2025-11-22T17:35:17.293851+01:00"
     description: A Helm chart for Plex Media Server
     digest: 9f2cb0ff111fa9c3d15ae531068f2e7a9f99491c8ebf4e426f116f815b627992
     home: https://www.plex.tv/
@@ -500,12 +567,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.1/plex-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.1.tgz
     version: 0.1.1
   prowlarr:
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-22T16:20:41.419212658Z"
+    created: "2025-11-22T17:35:17.295387+01:00"
     description: A Helm chart for Prowlarr
     digest: 99a3235b3d91a6791be326ffc0d19d37dfd0952750032436c930411c484c2653
     home: https://github.com/Prowlarr/Prowlarr
@@ -524,11 +591,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.5/prowlarr-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-22T13:55:17.399672374Z"
+    created: "2025-11-22T17:35:17.295206+01:00"
     description: A Helm chart for Prowlarr
     digest: 22f67497748ffd57780b89149a1fdca189b268e74efae779c3508f3754f7f14e
     home: https://github.com/Prowlarr/Prowlarr
@@ -547,11 +614,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.3/prowlarr-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-22T13:42:21.134840839Z"
+    created: "2025-11-22T17:35:17.295023+01:00"
     description: A Helm chart for Prowlarr
     digest: f06262fbd814b7dfa1b3e6a48d3ed03bc21a254a85eff87321dc3bf564215840
     home: https://github.com/Prowlarr/Prowlarr
@@ -570,11 +637,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.2/prowlarr-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-22T12:40:50.063084987Z"
+    created: "2025-11-22T17:35:17.29482+01:00"
     description: A Helm chart for Prowlarr
     digest: a3a24cf1ed696cacc6d49195aad07c8de91a83f3b22684e32f44dcb4148ab378
     home: https://github.com/Prowlarr/Prowlarr
@@ -593,12 +660,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.1/prowlarr-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.1.tgz
     version: 0.1.1
   radarr:
   - apiVersion: v2
     appVersion: 6.0.4
-    created: "2025-11-22T16:20:41.640137259Z"
+    created: "2025-11-22T17:35:17.296096+01:00"
     description: A Helm chart for Radarr
     digest: 797165b48ca77643a5651ab28a976e0375c9f9af8642d5e8e0332e0db14f21f7
     home: https://radarr.video/
@@ -617,11 +684,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.5/radarr-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 6.0.4
-    created: "2025-11-22T13:55:17.544409577Z"
+    created: "2025-11-22T17:35:17.295918+01:00"
     description: A Helm chart for Radarr
     digest: b1d188592693e7addf7f4abdd25733c06c2116fa59cebe17441dbec3f8b8c99d
     home: https://radarr.video/
@@ -640,11 +707,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.3/radarr-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 6.0.4
-    created: "2025-11-22T13:42:21.29532124Z"
+    created: "2025-11-22T17:35:17.29574+01:00"
     description: A Helm chart for Radarr
     digest: 02dd00d0e3a92c691eb102845777d0ad199a067a9385badd67d4b4ed368d047e
     home: https://radarr.video/
@@ -663,11 +730,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.2/radarr-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 6.0.4
-    created: "2025-11-22T12:40:50.25284567Z"
+    created: "2025-11-22T17:35:17.295563+01:00"
     description: A Helm chart for Radarr
     digest: 69a1d05f41b6fbb19553a92f2c484c8ef09d80aec536ad2ce927799829245789
     home: https://radarr.video/
@@ -686,12 +753,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.1/radarr-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.1.tgz
     version: 0.1.1
   sabnzbd:
   - apiVersion: v2
     appVersion: 4.5.5
-    created: "2025-11-22T16:20:41.873691651Z"
+    created: "2025-11-22T17:35:17.296983+01:00"
     description: A Helm chart for SABnzbd
     digest: 46dc37dca09c7a49a198b5a7c50fc9cc924ad8267f40d795674efb1babf6f661
     home: https://sabnzbd.org/
@@ -710,11 +777,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.5/sabnzbd-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 4.5.5
-    created: "2025-11-22T13:55:17.728061226Z"
+    created: "2025-11-22T17:35:17.296751+01:00"
     description: A Helm chart for SABnzbd
     digest: f8ccde1d015cbf212075817b1d346abf1d1220244985948b1318f59da5b4b9c4
     home: https://sabnzbd.org/
@@ -733,11 +800,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.3/sabnzbd-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 4.5.5
-    created: "2025-11-22T13:42:21.431947578Z"
+    created: "2025-11-22T17:35:17.296534+01:00"
     description: A Helm chart for SABnzbd
     digest: 67451ac0c525e6b174f356780e0a97b4d36ff651483f70aa41695f341b5e6f4c
     home: https://sabnzbd.org/
@@ -756,11 +823,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.2/sabnzbd-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 4.5.5
-    created: "2025-11-22T12:40:50.462255375Z"
+    created: "2025-11-22T17:35:17.296312+01:00"
     description: A Helm chart for SABnzbd
     digest: 9df477cbb011c9ecf1ffa8b20b9dc01abcdf823d37a68dcd680767f5799320c4
     home: https://sabnzbd.org/
@@ -779,12 +846,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.1/sabnzbd-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.1.tgz
     version: 0.1.1
   seerr:
   - apiVersion: v2
     appVersion: sha-bde322d
-    created: "2025-11-22T16:20:42.070026182Z"
+    created: "2025-11-22T17:35:17.297715+01:00"
     description: A Helm chart for Seerr
     digest: 606277773cce58b48381a16251669decba6713163a579c5eee217dd0015b71cb
     home: https://github.com/seerr-team/seerr
@@ -804,11 +871,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.5/seerr-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: sha-bde322d
-    created: "2025-11-22T13:55:17.887424345Z"
+    created: "2025-11-22T17:35:17.297542+01:00"
     description: A Helm chart for Seerr
     digest: 4b84d9c6564ab5ccb6c9429b97311f3aa1864ada61408effcd2d48cd53c3b277
     home: https://github.com/seerr-team/seerr
@@ -828,11 +895,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.3/seerr-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: sha-bde322d
-    created: "2025-11-22T13:42:21.568516116Z"
+    created: "2025-11-22T17:35:17.297368+01:00"
     description: A Helm chart for Seerr
     digest: 086105950047511932e62b49354b7e7f878a5f9e7c6df1d1db1317f6dfca4e0e
     home: https://github.com/seerr-team/seerr
@@ -852,11 +919,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.2/seerr-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: sha-bde322d
-    created: "2025-11-22T12:40:50.652623334Z"
+    created: "2025-11-22T17:35:17.297162+01:00"
     description: A Helm chart for Seerr
     digest: 0e8d54656683b61e5d4eb6594689fadbe7cef4c656e734de298ecd16419348d3
     home: https://github.com/seerr-team/seerr
@@ -876,12 +943,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.1/seerr-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.1.tgz
     version: 0.1.1
   sonarr:
   - apiVersion: v2
     appVersion: 4.0.16
-    created: "2025-11-22T16:20:42.304905972Z"
+    created: "2025-11-22T17:35:17.298911+01:00"
     description: A Helm chart for Sonarr
     digest: 4c54b71534ff18f41013b0c789a08dcd98dfb7df0d23af2a2f64ce01abfdab6e
     home: https://sonarr.tv/
@@ -901,11 +968,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.5/sonarr-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 4.0.16
-    created: "2025-11-22T13:55:18.054639584Z"
+    created: "2025-11-22T17:35:17.298694+01:00"
     description: A Helm chart for Sonarr
     digest: ae974fe3b60b23fba13f306b472dd17d37621d6ce389761e6a113e3aea7f4e61
     home: https://sonarr.tv/
@@ -925,11 +992,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.3/sonarr-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 4.0.16
-    created: "2025-11-22T13:42:21.700181182Z"
+    created: "2025-11-22T17:35:17.29847+01:00"
     description: A Helm chart for Sonarr
     digest: 13f24d9e63c7907fb4408cec9fdbf7c20e0059e99559624e364639a7de7c58c6
     home: https://sonarr.tv/
@@ -949,11 +1016,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.2/sonarr-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 4.0.16
-    created: "2025-11-22T12:40:50.839427475Z"
+    created: "2025-11-22T17:35:17.297988+01:00"
     description: A Helm chart for Sonarr
     digest: da51c3c5f197a2f05b932a75916021956e65763774969f9782caa076aae5e416
     home: https://sonarr.tv/
@@ -973,12 +1040,12 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.1/sonarr-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.1.tgz
     version: 0.1.1
   transmission:
   - apiVersion: v2
     appVersion: 4.0.6
-    created: "2025-11-22T16:20:42.526521097Z"
+    created: "2025-11-22T17:35:17.299868+01:00"
     description: A Helm chart for Transmission
     digest: b4c5d170b1db106eb33809b7bf8542ddb5ed2a4b11239a76c4b809d66352bd3f
     home: https://transmissionbt.com/
@@ -997,11 +1064,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.5/transmission-0.1.5.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
     appVersion: 4.0.6
-    created: "2025-11-22T13:55:18.216755597Z"
+    created: "2025-11-22T17:35:17.299641+01:00"
     description: A Helm chart for Transmission
     digest: a4f1dd856d4d2c3209ba056c76276bfc5777f8bc10ba38a6dbefc84d1c0c32b6
     home: https://transmissionbt.com/
@@ -1020,11 +1087,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.3/transmission-0.1.3.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 4.0.6
-    created: "2025-11-22T13:42:21.87703074Z"
+    created: "2025-11-22T17:35:17.299404+01:00"
     description: A Helm chart for Transmission
     digest: 7dffd51f963e3f0dd7de0f0d227aee12eb59e33c466132123be8f178e758ac8f
     home: https://transmissionbt.com/
@@ -1043,11 +1110,11 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.2/transmission-0.1.2.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 4.0.6
-    created: "2025-11-22T12:40:51.052675207Z"
+    created: "2025-11-22T17:35:17.29918+01:00"
     description: A Helm chart for Transmission
     digest: 9f7f969cbfa6b5aaa68738ecdcb38bce55c4f63d8d8dca9f0157f1560fc3e7c1
     home: https://transmissionbt.com/
@@ -1066,6 +1133,6 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts
     type: application
     urls:
-    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1/transmission-0.1.1.tgz
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-11-22T16:20:42.526659846Z"
+generated: "2025-11-22T17:35:17.280111+01:00"
