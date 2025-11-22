@@ -4,4 +4,4 @@ description: A Helm chart for Jackett
 type: application
 version: 0.1.0
 appVersion: "0.24.338"
-
+icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-logo.png

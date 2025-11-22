@@ -1,12 +1,5 @@
 ---
-kind: ConfigMap
-metadata:
-  name: sabnzbd-config
-data:
-  PGID: "{{ .Values.general.pgid }}"
-  PUID: "{{ .Values.general.puid }}"
-### CONFIGMAP
-## APPLICATION
+## APPLICATION CONFIGMAP
 apiVersion: v1
 kind: ConfigMap
 metadata:

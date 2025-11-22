@@ -32,4 +32,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "sonarr.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-

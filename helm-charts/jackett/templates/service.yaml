@@ -18,4 +18,3 @@ spec:
       name: jackett-port
   selector:
     app: jackett
-

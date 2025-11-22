@@ -4,4 +4,4 @@ description: A Helm chart for Jellyfin
 type: application
 version: 0.1.0
 appVersion: "10.11.3"
-
+icon: https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/icon-transparent.svg

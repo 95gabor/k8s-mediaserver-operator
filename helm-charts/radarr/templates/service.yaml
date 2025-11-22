@@ -18,4 +18,3 @@ spec:
       name: radarr-port
   selector:
     app: radarr
-

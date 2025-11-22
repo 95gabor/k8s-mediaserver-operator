@@ -4,4 +4,4 @@ description: A Helm chart for Sonarr
 type: application
 version: 0.1.0
 appVersion: "4.0.16"
-
+icon: https://raw.githubusercontent.com/Sonarr/Sonarr/develop/Logo/256.png

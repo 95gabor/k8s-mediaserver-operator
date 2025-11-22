@@ -65,4 +65,3 @@ ingress:
 resources: {}
 
 volume: {}
-

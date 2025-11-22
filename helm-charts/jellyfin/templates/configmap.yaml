@@ -7,4 +7,3 @@ metadata:
 data:
   PGID: "{{ .Values.general.pgid }}"
   PUID: "{{ .Values.general.puid }}"
-

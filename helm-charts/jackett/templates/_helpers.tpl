@@ -32,4 +32,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "jackett.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-

@@ -4,4 +4,4 @@ description: A Helm chart for SABnzbd
 type: application
 version: 0.1.0
 appVersion: "4.5.5"
-
+icon: https://media.sys.truenas.net/apps/sabnzbd/icons/icon.svg

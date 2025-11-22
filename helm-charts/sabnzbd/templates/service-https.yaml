@@ -18,4 +18,3 @@ spec:
 {{ end }}
   selector:
     app: sabnzbd
-

@@ -14,7 +14,14 @@ A Helm chart for deploying a complete media server stack on Kubernetes, includin
 - [Sabnzbd](https://sabnzbd.org/) - A free and easy binary newsreader.
 - [Seerr](https://github.com/seerr-team/seerr) - Media request and discovery manager for Jellyfin, Plex, and Emby.
 
-All container images used by the chart are from [linuxserver.io](https://www.linuxserver.io/).
+## Chart Structure
+
+This repository contains:
+
+- **Umbrella Chart** (`k8s-mediaserver`) - Deploys all services together with shared configuration
+- **Individual Service Charts** - Each service (sonarr, radarr, plex, etc.) can be installed independently
+
+All container images used by the chart are from [linuxserver.io](https://www.linuxserver.io/) except Seerr which uses the official image from [seerr-team](https://github.com/seerr-team/seerr).
 
 Each of the components can be **enabled** or **disabled** if you already have something in place in your lab!
 
@@ -23,6 +30,11 @@ Each of the components can be **enabled** or **disabled** if you already have so
 This Helm chart provides a simple and minimalistic way to deploy a complete media server stack on Kubernetes, with customizations that are strictly related to usability and access, rather than complex customizations.
 
 Each container has its _init container_ in order to initialize configurations on the PV before starting the actual pod and avoid restarting the pods.
+
+The chart is structured as an umbrella chart with individual service charts as dependencies, allowing you to:
+- Install all services together with shared configuration
+- Install individual services independently
+- Mix and match services as needed
 
 ## Prerequisites
 
@@ -35,6 +47,8 @@ Each container has its _init container_ in order to initialize configurations on
 
 ### Installation
 
+#### Option 1: Install All Services (Umbrella Chart)
+
 1. Add the Helm repository (if using a chart repository):
 
 ```bash
@@ -42,10 +56,11 @@ helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver
 helm repo update
 ```
 
-2. Install the chart with default values:
+2. Install the umbrella chart with default values:
 
 ```bash
 # Using local chart directory
+helm dependency update ./helm-charts/k8s-mediaserver
 helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace
 
@@ -63,14 +78,37 @@ cp ./helm-charts/k8s-mediaserver/values.yaml my-values.yaml
 # Edit my-values.yaml with your custom settings
 
 # Install with custom values
+helm dependency update ./helm-charts/k8s-mediaserver
 helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace \
   -f my-values.yaml
 ```
 
+#### Option 2: Install Individual Services
+
+You can also install individual service charts independently:
+
+```bash
+# Example: Install only Sonarr
+helm upgrade --install sonarr ./helm-charts/sonarr \
+  -n sonarr --create-namespace \
+  -f ./helm-charts/sonarr/values.yaml
+
+# Example: Install only Plex
+helm upgrade --install plex ./helm-charts/plex \
+  -n plex --create-namespace \
+  -f ./helm-charts/plex/values.yaml
+```
+
+See the [helm-charts README](helm-charts/README.md) for a complete list of available charts.
+
 ### Upgrading
 
 ```bash
+# Update dependencies first
+helm dependency update ./helm-charts/k8s-mediaserver
+
+# Then upgrade
 helm upgrade k8s-mediaserver ./helm-charts/k8s-mediaserver \
   -n k8s-mediaserver \
   -f my-values.yaml
@@ -79,7 +117,11 @@ helm upgrade k8s-mediaserver ./helm-charts/k8s-mediaserver \
 ### Uninstalling
 
 ```bash
+# Uninstall umbrella chart (removes all services)
 helm uninstall k8s-mediaserver -n k8s-mediaserver
+
+# Or uninstall individual services
+helm uninstall sonarr -n sonarr
 ```
 
 ## Default Access URLs
@@ -89,7 +131,7 @@ With default settings, your applications will run at these paths:
 | Service      | Link                                         |
 | ------------ | -------------------------------------------- |
 | Sonarr       | http://k8s-mediaserver.k8s.test/sonarr       |
-| Radarr       | http://k8s-mediaserver.k8s.test/radarr       |
+| Radarr       | http://k8s-mediaserver.k8s.test/radarr      |
 | Transmission | http://k8s-mediaserver.k8s.test/transmission |
 | Jackett      | http://k8s-mediaserver.k8s.test/jackett      |
 | Prowlarr     | http://k8s-mediaserver.k8s.test/prowlarr     |
@@ -127,6 +169,23 @@ Each service can be enabled/disabled and configured individually:
 - `{service}.service.type` - Service type (ClusterIP/NodePort/LoadBalancer)
 - `{service}.ingress.enabled` - Enable ingress
 - `{service}.resources` - Resource limits and requests
+
+## Available Charts
+
+This repository contains the following Helm charts:
+
+- **[k8s-mediaserver](helm-charts/k8s-mediaserver)** - Umbrella chart (deploys all services)
+- **[sonarr](helm-charts/sonarr)** - TV series tracker
+- **[radarr](helm-charts/radarr)** - Movie tracker
+- **[plex](helm-charts/plex)** - Media server
+- **[jellyfin](helm-charts/jellyfin)** - Alternative media server
+- **[jackett](helm-charts/jackett)** - Torrent tracker API
+- **[prowlarr](helm-charts/prowlarr)** - Indexer manager
+- **[transmission](helm-charts/transmission)** - Torrent client
+- **[sabnzbd](helm-charts/sabnzbd)** - Usenet client
+- **[seerr](helm-charts/seerr)** - Media request manager
+
+Each chart has its own README with detailed documentation. See [helm-charts/README.md](helm-charts/README.md) for more information.
 
 ## Helpful Use Cases
 
@@ -170,23 +229,97 @@ plex:
 
 ## Development
 
-### Linting
+### Setup Development Environment
+
+1. **Install pre-commit:**
+
+   ```bash
+   pip install pre-commit
+   ```
+
+2. **Install git hooks:**
+
+   ```bash
+   pre-commit install
+   pre-commit install --hook-type commit-msg
+   ```
+
+   This will automatically run checks before each commit, including:
+   - Conventional commit message validation
+   - YAML syntax checking
+   - Helm chart linting
+   - Documentation generation
+   - File formatting checks
+
+3. **Run pre-commit on all files (optional):**
+
+   ```bash
+   pre-commit run --all-files
+   ```
+
+### Development Workflow
+
+#### Linting
 
 ```bash
-make lint
+pre-commit run --all-files
 ```
 
-### Template Rendering
+#### Template Rendering
 
 ```bash
-make template
+helm template test-release ./helm-charts/k8s-mediaserver -f ./helm-charts/k8s-mediaserver/values.yaml
 ```
 
-### Packaging
+#### Packaging
 
 ```bash
-make package
+helm package ./helm-charts/k8s-mediaserver
 ```
+
+#### Generating Documentation
+
+```bash
+helm-docs --chart-search-root=helm-charts
+```
+
+### Commit Message Format
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/). Commit messages should follow this format:
+
+```
+<type>(<scope>): <subject>
+```
+
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+**Examples:**
+- `feat(seerr): add init container for permission setup`
+- `fix(sonarr): correct ingress path configuration`
+- `docs(readme): update installation instructions`
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
+
+- Development setup
+- Code style guidelines
+- Pull request process
+- Chart development guidelines
+
+## Acknowledgments
+
+Special thanks to [kubealex](https://github.com/kubealex) (Alessandro Rossi) for creating the original k8s-mediaserver project. This repository is a fork with enhancements including:
+
+- Split into individual service charts with umbrella chart support
+- Added Seerr media request manager
+- Improved chart structure and maintainability
+- Updated documentation and examples
+
+## Contributors
+
+- [kubealex](https://github.com/kubealex) - Original creator
+- [95gabor](https://github.com/95gabor) - Maintainer and contributor
 
 ## About the Project
 

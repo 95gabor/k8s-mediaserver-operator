@@ -67,4 +67,3 @@ volume: {}
 # accessModes: ReadWriteOnce
 # storage: 5Gi
 # selector: {}
-

@@ -99,8 +99,8 @@ jobs:
             --set plex.enabled=false \
             --set jellyfin.enabled=false
           sleep 15
-          for pod in $(kubectl get pods -n mediaserver | awk 'NR>1{ print $1 }'); do 
-            while [[ $(kubectl get pods $pod -n mediaserver -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do 
+          for pod in $(kubectl get pods -n mediaserver | awk 'NR>1{ print $1 }'); do
+            while [[ $(kubectl get pods $pod -n mediaserver -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
               echo "Waiting for mediaserver pods to be ready" && sleep 10
             done
           done

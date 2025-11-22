@@ -4,4 +4,4 @@ description: A Helm chart for Plex Media Server
 type: application
 version: 0.1.0
 appVersion: "1.42.2"
-
+icon: https://simpleicons.org/icons/plex.svg

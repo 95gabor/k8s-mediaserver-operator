@@ -32,4 +32,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "radarr.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-

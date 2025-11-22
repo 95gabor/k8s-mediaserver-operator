@@ -4,4 +4,4 @@ description: A Helm chart for Prowlarr
 type: application
 version: 0.1.0
 appVersion: "2.3.0"
-
+icon: https://raw.githubusercontent.com/Prowlarr/Prowlarr/develop/Logo/256.png

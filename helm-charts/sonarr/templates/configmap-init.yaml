@@ -17,4 +17,3 @@ data:
 kind: ConfigMap
 metadata:
   name: init-sonarr-cm
-

@@ -18,4 +18,3 @@ spec:
       name: prowlarr-port
   selector:
     app: prowlarr
-

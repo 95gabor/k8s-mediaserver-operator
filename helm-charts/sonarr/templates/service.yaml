@@ -18,4 +18,3 @@ spec:
       name: sonarr-port
   selector:
     app: sonarr
-
