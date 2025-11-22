@@ -4,6 +4,39 @@
 
 A Helm chart for Kubernetes mediaserver
 
+## Chart Repo
+
+Add the following repo to use the chart:
+
+```bash
+helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo update
+```
+
+### Installation
+
+- Install/upgrade in a namespace (using local chart directory):
+
+```bash
+helm upgrade --install k8s-mediaserver . \
+  -n k8s-mediaserver --create-namespace \
+  -f values.yaml
+```
+
+- Or install from a chart repository:
+
+```bash
+helm upgrade --install k8s-mediaserver k8s-mediaserver-operator/k8s-mediaserver \
+  -n k8s-mediaserver --create-namespace \
+  -f values.yaml
+```
+
+- Uninstall:
+
+```bash
+helm uninstall k8s-mediaserver -n k8s-mediaserver
+```
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -52,6 +85,7 @@ A Helm chart for Kubernetes mediaserver
 | jackett.container.image | string | `"docker.io/linuxserver/jackett"` |  |
 | jackett.container.nodeSelector | object | `{}` |  |
 | jackett.container.port | int | `9117` |  |
+| jackett.container.tag | string | `"0.24.338"` |  |
 | jackett.enabled | bool | `true` |  |
 | jackett.ingress.annotations | object | `{}` |  |
 | jackett.ingress.enabled | bool | `true` |  |
@@ -70,6 +104,7 @@ A Helm chart for Kubernetes mediaserver
 | jellyfin.container.image | string | `"docker.io/linuxserver/jellyfin"` |  |
 | jellyfin.container.nodeSelector | object | `{}` |  |
 | jellyfin.container.port | int | `8096` |  |
+| jellyfin.container.tag | string | `"latest"` |  |
 | jellyfin.enabled | bool | `false` |  |
 | jellyfin.ingress.annotations | object | `{}` |  |
 | jellyfin.ingress.enabled | bool | `true` |  |
@@ -89,6 +124,7 @@ A Helm chart for Kubernetes mediaserver
 | plex.container.image | string | `"docker.io/linuxserver/plex"` |  |
 | plex.container.nodeSelector | object | `{}` |  |
 | plex.container.port | int | `32400` |  |
+| plex.container.tag | string | `"1.42.2"` |  |
 | plex.enabled | bool | `true` |  |
 | plex.externalSecret | string | `nil` |  |
 | plex.ingress.annotations | object | `{}` |  |
@@ -128,6 +164,7 @@ A Helm chart for Kubernetes mediaserver
 | radarr.container.image | string | `"docker.io/linuxserver/radarr"` |  |
 | radarr.container.nodeSelector | object | `{}` |  |
 | radarr.container.port | int | `7878` |  |
+| radarr.container.tag | string | `"6.0.4"` |  |
 | radarr.enabled | bool | `true` |  |
 | radarr.ingress.annotations | object | `{}` |  |
 | radarr.ingress.enabled | bool | `true` |  |
@@ -147,6 +184,7 @@ A Helm chart for Kubernetes mediaserver
 | sabnzbd.container.nodeSelector | object | `{}` |  |
 | sabnzbd.container.port.http | int | `8080` |  |
 | sabnzbd.container.port.https | int | `9090` |  |
+| sabnzbd.container.tag | string | `"latest"` |  |
 | sabnzbd.enabled | bool | `true` |  |
 | sabnzbd.ingress.annotations | object | `{}` |  |
 | sabnzbd.ingress.enabled | bool | `true` |  |
@@ -169,6 +207,7 @@ A Helm chart for Kubernetes mediaserver
 | seerr.container.image | string | `"ghcr.io/seerr-team/seerr"` |  |
 | seerr.container.nodeSelector | object | `{}` |  |
 | seerr.container.port | int | `5055` |  |
+| seerr.container.tag | string | `"sha-bde322d"` |  |
 | seerr.enabled | bool | `true` |  |
 | seerr.ingress.annotations | object | `{}` |  |
 | seerr.ingress.enabled | bool | `true` |  |
@@ -188,6 +227,7 @@ A Helm chart for Kubernetes mediaserver
 | sonarr.container.image | string | `"docker.io/linuxserver/sonarr"` |  |
 | sonarr.container.nodeSelector | object | `{}` |  |
 | sonarr.container.port | int | `8989` |  |
+| sonarr.container.tag | string | `"4.0.16"` |  |
 | sonarr.enabled | bool | `true` |  |
 | sonarr.ingress.annotations | object | `{}` |  |
 | sonarr.ingress.enabled | bool | `true` |  |
@@ -210,6 +250,7 @@ A Helm chart for Kubernetes mediaserver
 | transmission.container.nodeSelector | object | `{}` |  |
 | transmission.container.port.peer | int | `51413` |  |
 | transmission.container.port.utp | int | `9091` |  |
+| transmission.container.tag | string | `"4.0.6"` |  |
 | transmission.enabled | bool | `true` |  |
 | transmission.ingress.annotations | object | `{}` |  |
 | transmission.ingress.enabled | bool | `true` |  |
