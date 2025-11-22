@@ -36,6 +36,7 @@ spec:
               subPath: "{{ .Values.general.storage.subPaths.config }}/sabnzbd"
           {{- end }}
           securityContext:
+            {{- if .Values.general.initContainer.runAsRoot }}
             runAsUser: 0
             runAsGroup: 0
             allowPrivilegeEscalation: false
@@ -44,6 +45,14 @@ spec:
                 - ALL
               add:
                 - CHOWN
+            {{- else }}
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
         runAsNonRoot: true

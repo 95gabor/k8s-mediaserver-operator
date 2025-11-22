@@ -27,7 +27,9 @@ spec:
             - -c
             - |
               mkdir -p /app/config/logs
+              {{- if .Values.general.initContainer.runAsRoot }}
               chown -R {{ .Values.general.puid }}:{{ .Values.general.pgid }} /app/config
+              {{- end }}
               chmod -R 755 /app/config
           volumeMounts:
             {{- if .Values.volume }}
@@ -39,6 +41,7 @@ spec:
                 subPath: "{{ .Values.general.storage.subPaths.config }}/seerr"
             {{- end }}
           securityContext:
+            {{- if .Values.general.initContainer.runAsRoot }}
             runAsUser: 0
             runAsGroup: 0
             allowPrivilegeEscalation: false
@@ -47,6 +50,14 @@ spec:
                 - ALL
               add:
                 - CHOWN
+            {{- else }}
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
         runAsNonRoot: true
