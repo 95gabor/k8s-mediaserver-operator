@@ -1,6 +1,6 @@
 # k8s-mediaserver
 
-![Version: 0.10.4](https://img.shields.io/badge/Version-0.10.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
+![Version: 0.10.5](https://img.shields.io/badge/Version-0.10.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes mediaserver (umbrella chart)
 
@@ -64,6 +64,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | general.ingress.ingressClassName | string | `""` |  |
 | general.ingress_host | string | `"k8s-mediaserver.k8s.test"` |  |
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |
+| general.initContainer.runAsRoot | bool | `true` |  |
 | general.initContainer.tag | float | `24.04` |  |
 | general.jellyfin_ingress_host | string | `"k8s-jelly.k8s.test"` |  |
 | general.nodeSelector | object | `{}` |  |

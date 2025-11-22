@@ -11,6 +11,10 @@ general:
     # https://hub.docker.com/_/ubuntu/tags
     image: docker.io/ubuntu
     tag: 24.04
+    # Set to false if cluster enforces non-root policy
+    # Note: When false, init container cannot chown root-owned files
+    # fsGroup will handle group ownership automatically
+    runAsRoot: true
   #UID to run the process with
   puid: 1000
   # GID to run the process with
