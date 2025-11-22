@@ -68,10 +68,8 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | general.initContainer.tag | float | `24.04` |  |
 | general.jellyfin_ingress_host | string | `"k8s-jelly.k8s.test"` |  |
 | general.nodeSelector | object | `{}` |  |
-| general.pgid | int | `1000` |  |
 | general.plex_ingress_host | string | `"k8s-plex.k8s.test"` |  |
 | general.podDistribution | string | `"cluster"` |  |
-| general.puid | int | `1000` |  |
 | general.storage.accessMode | string | `""` |  |
 | general.storage.customVolume | bool | `false` |  |
 | general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -94,9 +92,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | jackett.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | jackett.general.initContainer.tag | float | `24.04` |  |
 | jackett.general.nodeSelector | object | `{}` |  |
-| jackett.general.pgid | int | `1000` |  |
 | jackett.general.podDistribution | string | `"cluster"` |  |
-| jackett.general.puid | int | `1000` |  |
 | jackett.general.storage.accessMode | string | `""` |  |
 | jackett.general.storage.customVolume | bool | `false` |  |
 | jackett.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -132,9 +128,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | jellyfin.general.initContainer.tag | float | `24.04` |  |
 | jellyfin.general.jellyfin_ingress_host | string | `"k8s-jelly.k8s.test"` |  |
 | jellyfin.general.nodeSelector | object | `{}` |  |
-| jellyfin.general.pgid | int | `1000` |  |
 | jellyfin.general.podDistribution | string | `"cluster"` |  |
-| jellyfin.general.puid | int | `1000` |  |
 | jellyfin.general.storage.accessMode | string | `""` |  |
 | jellyfin.general.storage.customVolume | bool | `false` |  |
 | jellyfin.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -173,10 +167,8 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | plex.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | plex.general.initContainer.tag | float | `24.04` |  |
 | plex.general.nodeSelector | object | `{}` |  |
-| plex.general.pgid | int | `1000` |  |
 | plex.general.plex_ingress_host | string | `"k8s-plex.k8s.test"` |  |
 | plex.general.podDistribution | string | `"cluster"` |  |
-| plex.general.puid | int | `1000` |  |
 | plex.general.storage.accessMode | string | `""` |  |
 | plex.general.storage.customVolume | bool | `false` |  |
 | plex.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -211,9 +203,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | prowlarr.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | prowlarr.general.initContainer.tag | float | `24.04` |  |
 | prowlarr.general.nodeSelector | object | `{}` |  |
-| prowlarr.general.pgid | int | `1000` |  |
 | prowlarr.general.podDistribution | string | `"cluster"` |  |
-| prowlarr.general.puid | int | `1000` |  |
 | prowlarr.general.storage.accessMode | string | `""` |  |
 | prowlarr.general.storage.customVolume | bool | `false` |  |
 | prowlarr.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -249,9 +239,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | radarr.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | radarr.general.initContainer.tag | float | `24.04` |  |
 | radarr.general.nodeSelector | object | `{}` |  |
-| radarr.general.pgid | int | `1000` |  |
 | radarr.general.podDistribution | string | `"cluster"` |  |
-| radarr.general.puid | int | `1000` |  |
 | radarr.general.storage.accessMode | string | `""` |  |
 | radarr.general.storage.customVolume | bool | `false` |  |
 | radarr.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -287,9 +275,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | sabnzbd.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | sabnzbd.general.initContainer.tag | float | `24.04` |  |
 | sabnzbd.general.nodeSelector | object | `{}` |  |
-| sabnzbd.general.pgid | int | `1000` |  |
 | sabnzbd.general.podDistribution | string | `"cluster"` |  |
-| sabnzbd.general.puid | int | `1000` |  |
 | sabnzbd.general.storage.accessMode | string | `""` |  |
 | sabnzbd.general.storage.customVolume | bool | `false` |  |
 | sabnzbd.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -329,9 +315,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | seerr.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | seerr.general.initContainer.tag | float | `24.04` |  |
 | seerr.general.nodeSelector | object | `{}` |  |
-| seerr.general.pgid | int | `1000` |  |
 | seerr.general.podDistribution | string | `"cluster"` |  |
-| seerr.general.puid | int | `1000` |  |
 | seerr.general.storage.accessMode | string | `""` |  |
 | seerr.general.storage.customVolume | bool | `false` |  |
 | seerr.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -367,9 +351,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | sonarr.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | sonarr.general.initContainer.tag | float | `24.04` |  |
 | sonarr.general.nodeSelector | object | `{}` |  |
-| sonarr.general.pgid | int | `1000` |  |
 | sonarr.general.podDistribution | string | `"cluster"` |  |
-| sonarr.general.puid | int | `1000` |  |
 | sonarr.general.storage.accessMode | string | `""` |  |
 | sonarr.general.storage.customVolume | bool | `false` |  |
 | sonarr.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
@@ -408,9 +390,7 @@ helm uninstall k8s-mediaserver -n k8s-mediaserver
 | transmission.general.initContainer.image | string | `"docker.io/ubuntu"` |  |
 | transmission.general.initContainer.tag | float | `24.04` |  |
 | transmission.general.nodeSelector | object | `{}` |  |
-| transmission.general.pgid | int | `1000` |  |
 | transmission.general.podDistribution | string | `"cluster"` |  |
-| transmission.general.puid | int | `1000` |  |
 | transmission.general.storage.accessMode | string | `""` |  |
 | transmission.general.storage.customVolume | bool | `false` |  |
 | transmission.general.storage.pvcName | string | `"mediaserver-pvc"` |  |
