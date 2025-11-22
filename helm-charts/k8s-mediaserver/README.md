@@ -9,7 +9,7 @@ A Helm chart for Kubernetes mediaserver (umbrella chart)
 Add the following repo to use the chart:
 
 ```bash
-helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
 helm repo update
 ```
 
@@ -26,7 +26,7 @@ helm upgrade --install k8s-mediaserver . \
 - Or install from a chart repository:
 
 ```bash
-helm upgrade --install k8s-mediaserver k8s-mediaserver-operator/k8s-mediaserver \
+helm upgrade --install k8s-mediaserver k8s-mediaserver-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace \
   -f values.yaml
 ```

@@ -52,7 +52,7 @@ The chart is structured as an umbrella chart with individual service charts as d
 1. Add the Helm repository (if using a chart repository):
 
 ```bash
-helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
 helm repo update
 ```
 
@@ -65,7 +65,7 @@ helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace
 
 # Or from chart repository
-helm upgrade --install k8s-mediaserver k8s-mediaserver-operator/k8s-mediaserver \
+helm upgrade --install k8s-mediaserver k8s-mediaserver-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace
 ```
 

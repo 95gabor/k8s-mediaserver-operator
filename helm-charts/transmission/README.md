@@ -9,7 +9,7 @@ A Helm chart for Transmission
 Add the following repo to use the chart:
 
 ```bash
-helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
 helm repo update
 ```
 
@@ -26,7 +26,7 @@ helm upgrade --install transmission . \
 - Or install from a chart repository:
 
 ```bash
-helm upgrade --install transmission k8s-mediaserver-operator/transmission \
+helm upgrade --install transmission k8s-mediaserver-charts/transmission \
   -n transmission --create-namespace \
   -f values.yaml
 ```

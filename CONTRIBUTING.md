@@ -7,12 +7,12 @@ Thank you for your interest in contributing to k8s-mediaserver! This document pr
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/k8s-mediaserver-operator.git
-   cd k8s-mediaserver-operator
+   git clone https://github.com/YOUR_USERNAME/k8s-mediaserver-charts.git
+   cd k8s-mediaserver-charts
    ```
 3. Add the upstream repository:
    ```bash
-   git remote add upstream https://github.com/95gabor/k8s-mediaserver-operator.git
+   git remote add upstream https://github.com/95gabor/k8s-mediaserver-charts.git
    ```
 
 ## Development Setup

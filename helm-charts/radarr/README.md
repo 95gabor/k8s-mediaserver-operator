@@ -9,7 +9,7 @@ A Helm chart for Radarr
 Add the following repo to use the chart:
 
 ```bash
-helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
 helm repo update
 ```
 
@@ -26,7 +26,7 @@ helm upgrade --install radarr . \
 - Or install from a chart repository:
 
 ```bash
-helm upgrade --install radarr k8s-mediaserver-operator/radarr \
+helm upgrade --install radarr k8s-mediaserver-charts/radarr \
   -n radarr --create-namespace \
   -f values.yaml
 ```

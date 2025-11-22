@@ -52,15 +52,15 @@ helm upgrade --install plex ./plex \
 Charts are also available from the Helm repository:
 
 ```bash
-helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
 helm repo update
 
 # Install umbrella chart
-helm upgrade --install k8s-mediaserver k8s-mediaserver-operator/k8s-mediaserver \
+helm upgrade --install k8s-mediaserver k8s-mediaserver-charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace
 
 # Install individual service
-helm upgrade --install sonarr k8s-mediaserver-operator/sonarr \
+helm upgrade --install sonarr k8s-mediaserver-charts/sonarr \
   -n sonarr --create-namespace
 ```
 
