@@ -36,8 +36,19 @@ spec:
               subPath: "{{ .Values.general.storage.subPaths.config }}/sabnzbd"
           {{- end }}
           securityContext:
-            runAsUser: {{ .Values.general.puid }}
-            runAsGroup: {{ .Values.general.pgid }}
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - CHOWN
+      securityContext:
+        fsGroup: {{ .Values.general.pgid }}
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: sabnzbd
           envFrom:
@@ -45,6 +56,15 @@ spec:
                 name: sabnzbd-config
           image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
           imagePullPolicy: Always
+          securityContext:
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
           readinessProbe:
             httpGet:
               path: "{{ .Values.ingress.path }}/wizard/"

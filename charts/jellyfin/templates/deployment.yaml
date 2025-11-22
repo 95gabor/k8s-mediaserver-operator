@@ -31,6 +31,11 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.volume.name }}
         {{- end }}
+      securityContext:
+        fsGroup: {{ .Values.general.pgid }}
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: jellyfin
           envFrom:
@@ -38,6 +43,15 @@ spec:
                 name: jellyfin-config
           image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
           imagePullPolicy: Always
+          securityContext:
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
           readinessProbe:
             tcpSocket:
               port: {{ .Values.container.port }}
