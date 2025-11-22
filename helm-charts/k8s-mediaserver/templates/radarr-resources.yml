@@ -51,7 +51,7 @@ spec:
     spec:
       initContainers:
         - name: config-radarr
-          image: docker.io/ubuntu:groovy
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command: ["/init-radarr/init-radarr.sh"]
           volumeMounts:
             - mountPath: /init-radarr
@@ -76,7 +76,7 @@ spec:
             {{- with .Values.radarr.container.extraEnv }}
               {{- toYaml . | nindent 8 }}
             {{- end }}
-          image: "{{ .Values.radarr.container.image }}:{{ .Values.radarr.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.radarr.container.image }}:{{ .Values.radarr.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

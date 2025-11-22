@@ -66,7 +66,7 @@ spec:
             - secretRef:
                 name: {{ .Values.plex.externalSecret }}
             {{ end }}
-          image: "{{ .Values.plex.container.image }}:{{ .Values.plex.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.plex.container.image }}:{{ .Values.plex.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

@@ -50,7 +50,7 @@ spec:
     spec:
       initContainers:
         - name: config-sonarr
-          image: docker.io/ubuntu:groovy
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command: ["/init-sonarr/init-sonarr.sh"]
           volumeMounts:
             - mountPath: /init-sonarr
@@ -75,7 +75,7 @@ spec:
             {{- with .Values.sonarr.container.extraEnv }}
               {{- toYaml . | nindent 8 }}
             {{- end }}
-          image: "{{ .Values.sonarr.container.image }}:{{ .Values.sonarr.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.sonarr.container.image }}:{{ .Values.sonarr.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

@@ -38,7 +38,7 @@ spec:
             {{- with .Values.seerr.container.extraEnv }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
-          image: "{{ .Values.seerr.container.image }}:{{ .Values.seerr.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.seerr.container.image }}:{{ .Values.seerr.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

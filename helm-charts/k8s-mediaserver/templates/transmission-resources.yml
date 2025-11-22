@@ -117,7 +117,7 @@ spec:
     spec:
       initContainers:
         - name: config-transmission
-          image: docker.io/ubuntu:groovy
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command: ["/init-transmission/init-transmission.sh"]
           volumeMounts:
             - mountPath: /init-transmission
@@ -138,7 +138,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: transmission-config
-          image: "{{ .Values.transmission.container.image }}:{{ .Values.transmission.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.transmission.container.image }}:{{ .Values.transmission.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

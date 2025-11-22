@@ -46,7 +46,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: jellyfin-config
-          image: "{{ .Values.jellyfin.container.image }}:{{ .Values.jellyfin.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.jellyfin.container.image }}:{{ .Values.jellyfin.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             tcpSocket:

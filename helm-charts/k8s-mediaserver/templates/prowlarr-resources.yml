@@ -50,7 +50,7 @@ spec:
     spec:
       initContainers:
         - name: config-prowlarr
-          image: docker.io/ubuntu:groovy
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command: ["/init-prowlarr/init-prowlarr.sh"]
           volumeMounts:
             - mountPath: /init-prowlarr
@@ -71,7 +71,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: prowlarr-config
-          image: "{{ .Values.prowlarr.container.image }}:{{ .Values.prowlarr.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.prowlarr.container.image }}:{{ .Values.prowlarr.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:

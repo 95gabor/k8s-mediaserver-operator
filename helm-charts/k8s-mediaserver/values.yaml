@@ -6,8 +6,11 @@ general:
   ingress_host: k8s-mediaserver.k8s.test
   plex_ingress_host: k8s-plex.k8s.test
   jellyfin_ingress_host: k8s-jelly.k8s.test
-  image_tag: latest
   podDistribution: cluster # can be "spread" or "cluster"
+  initContainer:
+    # https://hub.docker.com/_/ubuntu/tags
+    image: docker.io/ubuntu
+    tag: 24.04
   #UID to run the process with
   puid: 1000
   # GID to run the process with
@@ -70,6 +73,9 @@ sonarr:
   enabled: true
   container:
     image: docker.io/linuxserver/sonarr
+    # https://hub.docker.com/r/linuxserver/sonarr/tags
+    # https://github.com/linuxserver/docker-sonarr/releases/latest
+    tag: 4.0.16
     nodeSelector: {}
     port: 8989
     extraEnv: []
@@ -106,6 +112,9 @@ radarr:
   enabled: true
   container:
     image: docker.io/linuxserver/radarr
+    # https://hub.docker.com/r/linuxserver/radarr/tags
+    # https://github.com/linuxserver/docker-radarr/releases/latest
+    tag: 6.0.4
     nodeSelector: {}
     port: 7878
     extraEnv: []
@@ -140,6 +149,9 @@ jackett:
   enabled: true
   container:
     image: docker.io/linuxserver/jackett
+    # https://hub.docker.com/r/linuxserver/jackett/tags
+    # https://github.com/linuxserver/docker-jackett/releases/latest
+    tag: 0.24.338
     nodeSelector: {}
     port: 9117
   service:
@@ -173,6 +185,9 @@ transmission:
   enabled: true
   container:
     image: docker.io/linuxserver/transmission
+    # https://hub.docker.com/r/linuxserver/transmission/tags
+    # https://github.com/linuxserver/docker-transmission/releases/latest
+    tag: 4.0.6
     nodeSelector: {}
     port:
       utp: 9091
@@ -224,6 +239,9 @@ sabnzbd:
   enabled: true
   container:
     image: docker.io/linuxserver/sabnzbd
+    # https://hub.docker.com/r/linuxserver/sabnzbd/tags
+    # https://github.com/linuxserver/docker-sabnzbd/releases/latest
+    tag: 4.5.5
     nodeSelector: {}
     port:
       http: 8080
@@ -264,7 +282,9 @@ prowlarr:
   enabled: true
   container:
     image: docker.io/linuxserver/prowlarr
-    tag: develop
+    # https://hub.docker.com/r/linuxserver/prowlarr/tags
+    # https://github.com/linuxserver/docker-prowlarr/releases/latest
+    tag: 2.3.0
     nodeSelector: {}
     port: 9696
   service:
@@ -301,6 +321,9 @@ plex:
   replicaCount: 1
   container:
     image: docker.io/linuxserver/plex
+    # https://hub.docker.com/r/linuxserver/plex/tags
+    # https://github.com/linuxserver/docker-plex/releases/latest
+    tag: 1.42.2
     nodeSelector: {}
     port: 32400
   service:
@@ -340,6 +363,9 @@ jellyfin:
   replicaCount: 1
   container:
     image: docker.io/linuxserver/jellyfin
+    # https://hub.docker.com/r/linuxserver/jellyfin/tags
+    # https://github.com/linuxserver/docker-jellyfin/releases/latest
+    tag: 10.11.3
     nodeSelector: {}
     port: 8096
   service:
@@ -378,6 +404,9 @@ seerr:
   enabled: true
   container:
     image: ghcr.io/seerr-team/seerr
+    # https://github.com/seerr-team/seerr/releases/latest
+    # https://github.com/seerr-team/seerr/pkgs/container/seerr
+    tag: sha-bde322d
     nodeSelector: {}
     port: 5055
     extraEnv: []

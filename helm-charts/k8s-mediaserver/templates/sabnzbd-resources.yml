@@ -353,7 +353,7 @@ spec:
     spec:
       initContainers:
         - name: config-sabnzbd
-          image: docker.io/ubuntu:groovy
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command: ["/init-sabnzbd/init-sabnzbd.sh"]
           volumeMounts:
             - mountPath: /init-sabnzbd
@@ -374,7 +374,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: sabnzbd-config
-          image: "{{ .Values.sabnzbd.container.image }}:{{ .Values.sabnzbd.container.tag | default .Values.general.image_tag }}"
+          image: "{{ .Values.sabnzbd.container.image }}:{{ .Values.sabnzbd.container.tag }}"
           imagePullPolicy: Always
           readinessProbe:
             httpGet:
