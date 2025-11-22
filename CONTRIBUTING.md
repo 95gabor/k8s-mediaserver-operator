@@ -117,19 +117,19 @@ chore(deps): update helm-docs version
 
 2. **Test template rendering:**
    ```bash
-   helm template test-release ./helm-charts/k8s-mediaserver \
-     -f ./helm-charts/k8s-mediaserver/values.yaml
+   helm template test-release ./charts/k8s-mediaserver \
+     -f ./charts/k8s-mediaserver/values.yaml
    ```
 
 3. **Test individual charts:**
    ```bash
-   helm template test-release ./helm-charts/sonarr \
-     -f ./helm-charts/sonarr/values.yaml
+   helm template test-release ./charts/sonarr \
+     -f ./charts/sonarr/values.yaml
    ```
 
 4. **Update documentation:**
    ```bash
-   helm-docs --chart-search-root=helm-charts
+   helm-docs --chart-search-root=charts
    ```
 
 ## Submitting Changes
@@ -173,7 +173,7 @@ chore(deps): update helm-docs version
 
 ### Adding a New Service
 
-1. Create a new chart directory: `helm-charts/<service-name>/`
+1. Create a new chart directory: `charts/<service-name>/`
 2. Follow the existing chart structure:
    - `Chart.yaml` - Chart metadata
    - `values.yaml` - Default values
@@ -182,7 +182,7 @@ chore(deps): update helm-docs version
 3. Ensure each template file renders only one resource
 4. Add the service to the umbrella chart's `Chart.yaml` dependencies
 5. Update the umbrella chart's `values.yaml` with service configuration
-6. Generate documentation: `helm-docs --chart-search-root=helm-charts`
+6. Generate documentation: `helm-docs --chart-search-root=charts`
 
 ### Modifying Existing Services
 

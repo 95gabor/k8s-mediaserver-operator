@@ -60,8 +60,8 @@ helm repo update
 
 ```bash
 # Using local chart directory
-helm dependency update ./helm-charts/k8s-mediaserver
-helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
+helm dependency update ./charts/k8s-mediaserver
+helm upgrade --install k8s-mediaserver ./charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace
 
 # Or from chart repository
@@ -73,13 +73,13 @@ helm upgrade --install k8s-mediaserver k8s-mediaserver-charts/k8s-mediaserver \
 
 ```bash
 # Copy the default values file
-cp ./helm-charts/k8s-mediaserver/values.yaml my-values.yaml
+cp ./charts/k8s-mediaserver/values.yaml my-values.yaml
 
 # Edit my-values.yaml with your custom settings
 
 # Install with custom values
-helm dependency update ./helm-charts/k8s-mediaserver
-helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
+helm dependency update ./charts/k8s-mediaserver
+helm upgrade --install k8s-mediaserver ./charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace \
   -f my-values.yaml
 ```
@@ -90,26 +90,26 @@ You can also install individual service charts independently:
 
 ```bash
 # Example: Install only Sonarr
-helm upgrade --install sonarr ./helm-charts/sonarr \
+helm upgrade --install sonarr ./charts/sonarr \
   -n sonarr --create-namespace \
-  -f ./helm-charts/sonarr/values.yaml
+  -f ./charts/sonarr/values.yaml
 
 # Example: Install only Plex
-helm upgrade --install plex ./helm-charts/plex \
+helm upgrade --install plex ./charts/plex \
   -n plex --create-namespace \
-  -f ./helm-charts/plex/values.yaml
+  -f ./charts/plex/values.yaml
 ```
 
-See the [helm-charts README](helm-charts/README.md) for a complete list of available charts.
+See the [charts README](charts/README.md) for a complete list of available charts.
 
 ### Upgrading
 
 ```bash
 # Update dependencies first
-helm dependency update ./helm-charts/k8s-mediaserver
+helm dependency update ./charts/k8s-mediaserver
 
 # Then upgrade
-helm upgrade k8s-mediaserver ./helm-charts/k8s-mediaserver \
+helm upgrade k8s-mediaserver ./charts/k8s-mediaserver \
   -n k8s-mediaserver \
   -f my-values.yaml
 ```
@@ -144,7 +144,7 @@ With default settings, your applications will run at these paths:
 
 The chart is quite simple to configure, with a low number of parameters to avoid confusion, while still allowing customization to fit the resources inside your cluster.
 
-See the [values.yaml](helm-charts/k8s-mediaserver/values.yaml) file for all available configuration options, or check the [Helm chart README](helm-charts/k8s-mediaserver/README.md) for detailed documentation.
+See the [values.yaml](charts/k8s-mediaserver/values.yaml) file for all available configuration options, or check the [Helm chart README](charts/k8s-mediaserver/README.md) for detailed documentation.
 
 ### General Configuration
 
@@ -174,18 +174,18 @@ Each service can be enabled/disabled and configured individually:
 
 This repository contains the following Helm charts:
 
-- **[k8s-mediaserver](helm-charts/k8s-mediaserver)** - Umbrella chart (deploys all services)
-- **[sonarr](helm-charts/sonarr)** - TV series tracker
-- **[radarr](helm-charts/radarr)** - Movie tracker
-- **[plex](helm-charts/plex)** - Media server
-- **[jellyfin](helm-charts/jellyfin)** - Alternative media server
-- **[jackett](helm-charts/jackett)** - Torrent tracker API
-- **[prowlarr](helm-charts/prowlarr)** - Indexer manager
-- **[transmission](helm-charts/transmission)** - Torrent client
-- **[sabnzbd](helm-charts/sabnzbd)** - Usenet client
-- **[seerr](helm-charts/seerr)** - Media request manager
+- **[k8s-mediaserver](charts/k8s-mediaserver)** - Umbrella chart (deploys all services)
+- **[sonarr](charts/sonarr)** - TV series tracker
+- **[radarr](charts/radarr)** - Movie tracker
+- **[plex](charts/plex)** - Media server
+- **[jellyfin](charts/jellyfin)** - Alternative media server
+- **[jackett](charts/jackett)** - Torrent tracker API
+- **[prowlarr](charts/prowlarr)** - Indexer manager
+- **[transmission](charts/transmission)** - Torrent client
+- **[sabnzbd](charts/sabnzbd)** - Usenet client
+- **[seerr](charts/seerr)** - Media request manager
 
-Each chart has its own README with detailed documentation. See [helm-charts/README.md](helm-charts/README.md) for more information.
+Each chart has its own README with detailed documentation. See [charts/README.md](charts/README.md) for more information.
 
 ## Helpful Use Cases
 
@@ -268,19 +268,19 @@ pre-commit run --all-files
 #### Template Rendering
 
 ```bash
-helm template test-release ./helm-charts/k8s-mediaserver -f ./helm-charts/k8s-mediaserver/values.yaml
+helm template test-release ./charts/k8s-mediaserver -f ./charts/k8s-mediaserver/values.yaml
 ```
 
 #### Packaging
 
 ```bash
-helm package ./helm-charts/k8s-mediaserver
+helm package ./charts/k8s-mediaserver
 ```
 
 #### Generating Documentation
 
 ```bash
-helm-docs --chart-search-root=helm-charts
+helm-docs --chart-search-root=charts
 ```
 
 ### Commit Message Format

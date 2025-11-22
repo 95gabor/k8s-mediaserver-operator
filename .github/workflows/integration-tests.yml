@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, reopened, edited, synchronize]
     paths:
-      - "helm-charts/k8s-mediaserver/**"
+      - "charts/k8s-mediaserver/**"
   workflow_dispatch:
 
 jobs:
@@ -20,10 +20,10 @@ jobs:
         id: install-helm
 
       - name: Lint Helm template
-        run: helm lint helm-charts/k8s-mediaserver
+        run: helm lint charts/k8s-mediaserver
 
       - name: Template Helm chart
-        run: helm template helm-charts/k8s-mediaserver
+        run: helm template charts/k8s-mediaserver
 
   helm-deploy-test:
     needs: helm-linter
@@ -91,7 +91,7 @@ jobs:
 
       - name: Deploy Helm chart
         run: |
-          helm upgrade --install k8s-mediaserver ./helm-charts/k8s-mediaserver \
+          helm upgrade --install k8s-mediaserver ./charts/k8s-mediaserver \
             -n mediaserver \
             --set general.storage.pvcName=mediaserver-pvc \
             --set general.storage.pvcStorageClass=standard \

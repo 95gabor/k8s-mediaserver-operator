@@ -29,4 +29,4 @@ repos:
       - id: helm-docs-container
         entry: jnorwood/helm-docs:v1.14.2
         args:
-          - --chart-search-root=helm-charts
+          - --chart-search-root=charts

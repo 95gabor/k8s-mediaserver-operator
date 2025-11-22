@@ -38,6 +38,11 @@ jobs:
         with:
           version: v3.12.0
 
+      - name: Update umbrella chart dependencies
+        run: |
+          cd charts/k8s-mediaserver
+          helm dependency update || echo "Warning: Could not update dependencies (this is expected for local file dependencies)"
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         env:
