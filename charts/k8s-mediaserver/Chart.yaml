@@ -27,37 +27,37 @@ maintainers:
 dependencies:
   - name: sonarr
     version: "0.1.1"
-    repository: "file://../sonarr"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: sonarr.enabled
   - name: radarr
     version: "0.1.1"
-    repository: "file://../radarr"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: radarr.enabled
   - name: jackett
     version: "0.1.1"
-    repository: "file://../jackett"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: jackett.enabled
   - name: prowlarr
     version: "0.1.1"
-    repository: "file://../prowlarr"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: prowlarr.enabled
   - name: transmission
     version: "0.1.1"
-    repository: "file://../transmission"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: transmission.enabled
   - name: sabnzbd
     version: "0.1.1"
-    repository: "file://../sabnzbd"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: sabnzbd.enabled
   - name: plex
     version: "0.1.1"
-    repository: "file://../plex"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: plex.enabled
   - name: jellyfin
     version: "0.1.1"
-    repository: "file://../jellyfin"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: jellyfin.enabled
   - name: seerr
     version: "0.1.1"
-    repository: "file://../seerr"
+    repository: "https://95gabor.github.io/k8s-mediaserver-charts"
     condition: seerr.enabled
