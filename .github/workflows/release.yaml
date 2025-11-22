@@ -38,10 +38,15 @@ jobs:
         with:
           version: v3.12.0
 
+      - name: Add Helm repositories for dependencies
+        run: |
+          helm repo add k8s-mediaserver-charts https://95gabor.github.io/k8s-mediaserver-charts
+          helm repo update
+
       - name: Update umbrella chart dependencies
         run: |
           cd charts/k8s-mediaserver
-          helm dependency update || echo "Warning: Could not update dependencies (this is expected for local file dependencies)"
+          helm dependency update
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
