@@ -373,3 +373,37 @@ jellyfin:
   #  accessModes: ReadWriteOnce
   #  storage: 5Gi
   #  selector: {}
+
+seerr:
+  enabled: true
+  container:
+    image: ghcr.io/seerr-team/seerr
+    nodeSelector: {}
+    port: 5055
+    extraEnv: []
+  service:
+    type: ClusterIP
+    port: 5055
+    nodePort:
+    # Defines an additional LB service, requires cloud provider service or MetalLB
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP:
+  ingress:
+    enabled: true
+    annotations: {}
+    path: /seerr
+    tls:
+      enabled: false
+      secretName: ""
+  resources: {}
+  volume: {}
+  #  name: pvc-seerr-config
+  #  storageClassName: longhorn
+  #  annotations: {}
+  #  labels: {}
+  #  accessModes: ReadWriteOnce
+  #  storage: 5Gi
+  #  selector: {}
