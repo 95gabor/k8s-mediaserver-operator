@@ -5,3 +5,16 @@ type: application
 version: 0.1.0
 appVersion: "sha-bde322d"
 icon: https://raw.githubusercontent.com/seerr-team/seerr/main/public/logo_full.svg
+home: https://github.com/seerr-team/seerr
+sources:
+  - https://github.com/seerr-team/seerr
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - seerr
+  - media
+  - request
+  - discovery
+  - plex
+  - jellyfin
+maintainers:
+  - name: 95gabor

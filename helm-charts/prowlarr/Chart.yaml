@@ -5,3 +5,15 @@ type: application
 version: 0.1.0
 appVersion: "2.3.0"
 icon: https://raw.githubusercontent.com/Prowlarr/Prowlarr/develop/Logo/256.png
+home: https://github.com/Prowlarr/Prowlarr
+sources:
+  - https://github.com/Prowlarr/Prowlarr
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - prowlarr
+  - indexer
+  - tracker
+  - pvr
+  - media
+maintainers:
+  - name: 95gabor

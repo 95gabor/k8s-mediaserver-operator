@@ -5,3 +5,15 @@ type: application
 version: 0.1.0
 appVersion: "4.5.5"
 icon: https://media.sys.truenas.net/apps/sabnzbd/icons/icon.svg
+home: https://sabnzbd.org/
+sources:
+  - https://github.com/sabnzbd/sabnzbd
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - sabnzbd
+  - usenet
+  - nzb
+  - download
+  - media
+maintainers:
+  - name: 95gabor

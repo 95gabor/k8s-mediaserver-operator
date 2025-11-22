@@ -5,6 +5,25 @@ name: k8s-mediaserver
 type: application
 version: 0.10.1
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+home: https://github.com/95gabor/k8s-mediaserver-charts
+sources:
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - media
+  - server
+  - plex
+  - jellyfin
+  - sonarr
+  - radarr
+  - transmission
+  - sabnzbd
+  - jackett
+  - prowlarr
+  - seerr
+  - streaming
+  - automation
+maintainers:
+  - name: 95gabor
 dependencies:
   - name: sonarr
     version: "0.1.0"

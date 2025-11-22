@@ -5,3 +5,16 @@ type: application
 version: 0.1.0
 appVersion: "4.0.16"
 icon: https://raw.githubusercontent.com/Sonarr/Sonarr/develop/Logo/256.png
+home: https://sonarr.tv/
+sources:
+  - https://github.com/Sonarr/Sonarr
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - sonarr
+  - tv
+  - series
+  - tracker
+  - media
+  - automation
+maintainers:
+  - name: 95gabor

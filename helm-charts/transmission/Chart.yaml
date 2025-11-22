@@ -5,3 +5,15 @@ type: application
 version: 0.1.0
 appVersion: "4.0.6"
 icon: https://simpleicons.org/icons/transmission.svg
+home: https://transmissionbt.com/
+sources:
+  - https://github.com/transmission/transmission
+  - https://github.com/95gabor/k8s-mediaserver-charts
+keywords:
+  - transmission
+  - torrent
+  - bittorrent
+  - download
+  - media
+maintainers:
+  - name: 95gabor
