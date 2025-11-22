@@ -1,0 +1,37 @@
+name: README sync
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'README.md'
+      - '**/README.md'
+
+jobs:
+  build:
+    permissions:
+      contents: write # for git push
+
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - uses: pre-commit/action@v3.0.1
+
+      - run: |
+          find . -type f -name 'README.md' -exec cp --parents '{}' "${{ runner.temp }}" \;
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - run: |
+          cp -r ${{ runner.temp }}/. .
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add **/README.md **/**/README.md
+          git commit --signoff -m "Sync README from main"
+          git push
