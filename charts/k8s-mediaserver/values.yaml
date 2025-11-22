@@ -15,10 +15,6 @@ general:
     # Note: When false, init container cannot chown root-owned files
     # fsGroup will handle group ownership automatically
     runAsRoot: true
-  #UID to run the process with
-  puid: 1000
-  # GID to run the process with
-  pgid: 1000
   # Persistent storage selections and pathing
   storage:
     customVolume: false # set to true if not using a PVC (must provide volume below)
@@ -82,8 +78,6 @@ sonarr:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -146,8 +140,6 @@ radarr:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -208,8 +200,6 @@ jackett:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -269,8 +259,6 @@ transmission:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -349,8 +337,6 @@ sabnzbd:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -418,8 +404,6 @@ prowlarr:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -480,8 +464,6 @@ plex:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -553,8 +535,6 @@ jellyfin:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
@@ -620,8 +600,6 @@ seerr:
     initContainer:
       image: docker.io/ubuntu
       tag: 24.04
-    puid: 1000
-    pgid: 1000
     storage:
       customVolume: false
       pvcName: mediaserver-pvc
