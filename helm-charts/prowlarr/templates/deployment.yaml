@@ -1,0 +1,129 @@
+---
+### DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  labels:
+    {{- include "prowlarr.labels" . | nindent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "prowlarr.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "prowlarr.selectorLabels" . | nindent 8 }}
+        app: prowlarr
+    spec:
+      initContainers:
+        - name: config-prowlarr
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
+          command: ["/init-prowlarr/init-prowlarr.sh"]
+          volumeMounts:
+            - mountPath: /init-prowlarr
+              name: init-files-prowlarr
+          {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /prowlarr-config
+          {{- else }}
+            - name: mediaserver-volume
+              mountPath: /prowlarr-config
+              subPath: "{{ .Values.general.storage.subPaths.config }}/prowlarr"
+          {{- end }}
+          securityContext:
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+      containers:
+        - name: prowlarr
+          envFrom:
+            - configMapRef:
+                name: prowlarr-config
+          env:
+            {{- with .Values.container.extraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: "{{ .Values.ingress.path }}/ping"
+              port: {{ .Values.container.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            timeoutSeconds: 20
+          ports:
+            - name: prowlarr-port
+              containerPort: {{ .Values.container.port }}
+              protocol: TCP
+          volumeMounts:
+          {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /config
+          {{- else }}
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "{{ .Values.general.storage.subPaths.config }}/prowlarr"
+          {{- end }}
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "{{ .Values.general.storage.subPaths.downloads }}"
+            - name: mediaserver-volume
+              mountPath: "/tv"
+              subPath: "{{ .Values.general.storage.subPaths.tv }}"
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        {{- if not .Values.general.storage.customVolume }}
+        - name: mediaserver-volume
+          persistentVolumeClaim:
+            claimName: {{ .Values.general.storage.pvcName }}
+        {{- else }}
+        - name: mediaserver-volume
+          {{- toYaml .Values.general.storage.volumes | nindent 10 }}
+        {{- end }}
+        {{- if .Values.volume }}
+        - name: {{ .Values.volume.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.volume.name }}
+        {{- end }}
+        - name: init-files-prowlarr
+          configMap:
+            defaultMode: 493
+            name: init-prowlarr-cm
+      {{- with merge .Values.container.nodeSelector .Values.general.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.general.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if eq .Values.general.podDistribution "cluster" }}
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/instance
+                  operator: In
+                  values:
+                  - {{ .Release.Name }}
+              topologyKey: "kubernetes.io/hostname"
+            weight: 100
+      {{- else if eq .Values.general.podDistribution "spread" }}
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        whenUnsatisfiable: "ScheduleAnyway"
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- end }}
+

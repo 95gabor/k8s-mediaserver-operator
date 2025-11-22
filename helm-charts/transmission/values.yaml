@@ -1,0 +1,78 @@
+# Default values for transmission
+# This is a YAML-formatted file.
+
+# General configuration (passed from umbrella chart)
+general:
+  ingress_host: k8s-mediaserver.k8s.test
+  podDistribution: cluster
+  initContainer:
+    image: docker.io/ubuntu
+    tag: 24.04
+  puid: 1000
+  pgid: 1000
+  storage:
+    customVolume: false
+    pvcName: mediaserver-pvc
+    accessMode: ""
+    pvcStorageClass: ""
+    subPaths:
+      tv: media/tv
+      movies: media/movies
+      downloads: downloads
+      transmission: transmission
+      config: config
+    volumes: {}
+  ingress:
+    ingressClassName: ""
+  nodeSelector: {}
+  tolerations: []
+
+# Transmission specific configuration
+container:
+  image: docker.io/linuxserver/transmission
+  # https://hub.docker.com/r/linuxserver/transmission/tags
+  # https://github.com/linuxserver/docker-transmission/releases/latest
+  tag: 4.0.6
+  nodeSelector: {}
+  port:
+    utp: 9091
+    peer: 51413
+
+service:
+  utp:
+    type: ClusterIP
+    port: 9091
+    nodePort:
+    # Defines an additional LB service, requires cloud provider service or MetalLB
+    extraLbService:
+      enabled: false
+      annotations: {}
+      port: 80
+      loadBalancerIP:
+  peer:
+    type: ClusterIP
+    port: 51413
+    nodePort:
+    nodePortUDP:
+    # Defines an additional LB service, requires cloud provider service or MetalLB
+    extraLBService: false
+    extraLBAnnotations: {}
+
+ingress:
+  enabled: true
+  annotations: {}
+  path: /transmission
+  tls:
+    enabled: false
+    secretName: ""
+
+config:
+  auth:
+    enabled: false
+    username: ""
+    password: ""
+
+resources: {}
+
+volume: {}
+

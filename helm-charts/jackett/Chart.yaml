@@ -1,0 +1,7 @@
+apiVersion: v2
+name: jackett
+description: A Helm chart for Jackett
+type: application
+version: 0.1.0
+appVersion: "0.24.338"
+

@@ -1,0 +1,24 @@
+---
+{{ if .Values.service.https.extraLBService }}
+### SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: sabnzbd-lb-https
+  {{- with .Values.service.https.extraLBAnnotations }}
+  annotations:
+    {{- . | toYaml | nindent 4 }}
+  {{- end }}
+  labels:
+    {{- include "sabnzbd.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.service.https.port }}
+      targetPort: {{ .Values.container.port.https }}
+      protocol: TCP
+      name: sabnzbd-https
+  selector:
+    app: sabnzbd
+{{ end }}
+

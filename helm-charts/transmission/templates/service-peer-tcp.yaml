@@ -1,0 +1,21 @@
+---
+### SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission-peer-tcp
+  labels:
+    {{- include "transmission.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.peer.type }}
+  ports:
+    - port: {{ .Values.service.peer.port }}
+      targetPort: {{ .Values.container.port.peer }}
+      protocol: TCP
+      name: trans-peer-tcp
+{{ if eq .Values.service.peer.type "NodePort" }}
+      nodePort: {{ .Values.service.peer.nodePort }}
+{{ end }}
+  selector:
+    app: transmission
+

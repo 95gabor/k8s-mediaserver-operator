@@ -1,0 +1,60 @@
+# Default values for prowlarr
+# This is a YAML-formatted file.
+
+# General configuration (passed from umbrella chart)
+general:
+  ingress_host: k8s-mediaserver.k8s.test
+  podDistribution: cluster
+  initContainer:
+    image: docker.io/ubuntu
+    tag: 24.04
+  puid: 1000
+  pgid: 1000
+  storage:
+    customVolume: false
+    pvcName: mediaserver-pvc
+    accessMode: ""
+    pvcStorageClass: ""
+    subPaths:
+      tv: media/tv
+      movies: media/movies
+      downloads: downloads
+      config: config
+    volumes: {}
+  ingress:
+    ingressClassName: ""
+  nodeSelector: {}
+  tolerations: []
+
+# Prowlarr specific configuration
+container:
+  image: docker.io/linuxserver/prowlarr
+  # https://hub.docker.com/r/linuxserver/prowlarr/tags
+  # https://github.com/linuxserver/docker-prowlarr/releases/latest
+  tag: 2.3.0
+  nodeSelector: {}
+  port: 9696
+
+service:
+  type: ClusterIP
+  port: 9696
+  nodePort:
+  # Defines an additional LB service, requires cloud provider service or MetalLB
+  extraLbService:
+    enabled: false
+    annotations: {}
+    port: 80
+    loadBalancerIP:
+
+ingress:
+  enabled: true
+  annotations: {}
+  path: /prowlarr
+  tls:
+    enabled: false
+    secretName: ""
+
+resources: {}
+
+volume: {}
+

@@ -1,0 +1,115 @@
+---
+### DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jackett
+  labels:
+    {{- include "jackett.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "jackett.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "jackett.selectorLabels" . | nindent 8 }}
+        app: jackett
+    spec:
+      initContainers:
+        - name: config-jackett
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
+          command: ["/init-jackett/init-jackett.sh"]
+          volumeMounts:
+            - mountPath: /init-jackett
+              name: init-files-jackett
+          {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /jackett-config
+          {{- else }}
+            - name: mediaserver-volume
+              mountPath: /jackett-config
+              subPath: "{{ .Values.general.storage.subPaths.config }}/jackett/Jackett"
+          {{- end }}
+          securityContext:
+            runAsUser: {{ .Values.general.puid }}
+            runAsGroup: {{ .Values.general.pgid }}
+      containers:
+        - name: jackett
+          envFrom:
+            - configMapRef:
+                name: jackett-config
+          image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
+          imagePullPolicy: Always
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.container.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          ports:
+            - name: jackett-port
+              containerPort: {{ .Values.container.port }}
+              protocol: TCP
+          volumeMounts:
+          {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /config
+          {{- else }}
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "{{ .Values.general.storage.subPaths.config }}/jackett"
+          {{- end }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        {{- if not .Values.general.storage.customVolume }}
+        - name: mediaserver-volume
+          persistentVolumeClaim:
+            claimName: {{ .Values.general.storage.pvcName }}
+        {{- else }}
+        - name: mediaserver-volume
+          {{- toYaml .Values.general.storage.volumes | nindent 10 }}
+        {{- end }}
+        {{- if .Values.volume }}
+        - name: {{ .Values.volume.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.volume.name }}
+        {{- end }}
+        - name: init-files-jackett
+          configMap:
+            defaultMode: 493
+            name: init-jackett-cm
+      {{- with merge .Values.container.nodeSelector .Values.general.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.general.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if eq .Values.general.podDistribution "cluster" }}
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/instance
+                  operator: In
+                  values:
+                  - {{ .Release.Name }}
+              topologyKey: "kubernetes.io/hostname"
+            weight: 100
+      {{- else if eq .Values.general.podDistribution "spread" }}
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        whenUnsatisfiable: "ScheduleAnyway"
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- end }}
+

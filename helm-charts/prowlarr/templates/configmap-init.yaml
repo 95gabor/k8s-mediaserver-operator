@@ -1,0 +1,19 @@
+---
+### CONFIGMAP
+## INIT-CONTAINER
+apiVersion: v1
+data:
+  config.xml: |
+    <Config>
+      <UrlBase>{{ .Values.ingress.path }}</UrlBase>
+    </Config>
+  init-prowlarr.sh: |
+    #!/bin/bash
+    echo "### Initializing config ###"
+    if [ ! -f /prowlarr-config/config.xml ]; then
+      cp -n /init-prowlarr/config.xml /prowlarr-config/config.xml
+      echo "### No configuration found, intialized with default settings ###"
+    fi
+kind: ConfigMap
+metadata:
+  name: init-prowlarr-cm

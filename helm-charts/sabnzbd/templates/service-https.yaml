@@ -1,0 +1,21 @@
+---
+### SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: sabnzbd-https
+  labels:
+    {{- include "sabnzbd.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.https.type }}
+  ports:
+    - port: {{ .Values.service.https.port }}
+      targetPort: {{ .Values.container.port.https }}
+      protocol: TCP
+      name: sabnzbd-https
+{{ if eq .Values.service.https.type "NodePort" }}
+      nodePort: {{ .Values.service.https.nodePort }}
+{{ end }}
+  selector:
+    app: sabnzbd
+

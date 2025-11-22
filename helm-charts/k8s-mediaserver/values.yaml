@@ -71,6 +71,31 @@ general:
 
 sonarr:
   enabled: true
+  # General configuration passed to sonarr subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Sonarr specific configuration
   container:
     image: docker.io/linuxserver/sonarr
     # https://hub.docker.com/r/linuxserver/sonarr/tags
@@ -110,6 +135,31 @@ sonarr:
 
 radarr:
   enabled: true
+  # General configuration passed to radarr subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Radarr specific configuration
   container:
     image: docker.io/linuxserver/radarr
     # https://hub.docker.com/r/linuxserver/radarr/tags
@@ -147,6 +197,31 @@ radarr:
 
 jackett:
   enabled: true
+  # General configuration passed to jackett subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Jackett specific configuration
   container:
     image: docker.io/linuxserver/jackett
     # https://hub.docker.com/r/linuxserver/jackett/tags
@@ -183,6 +258,32 @@ jackett:
 
 transmission:
   enabled: true
+  # General configuration passed to transmission subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        transmission: transmission
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Transmission specific configuration
   container:
     image: docker.io/linuxserver/transmission
     # https://hub.docker.com/r/linuxserver/transmission/tags
@@ -237,6 +338,32 @@ transmission:
 
 sabnzbd:
   enabled: true
+  # General configuration passed to sabnzbd subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        sabnzbd: sabnzbd
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # SABnzbd specific configuration
   container:
     image: docker.io/linuxserver/sabnzbd
     # https://hub.docker.com/r/linuxserver/sabnzbd/tags
@@ -280,6 +407,31 @@ sabnzbd:
 
 prowlarr:
   enabled: true
+  # General configuration passed to prowlarr subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Prowlarr specific configuration
   container:
     image: docker.io/linuxserver/prowlarr
     # https://hub.docker.com/r/linuxserver/prowlarr/tags
@@ -316,6 +468,35 @@ prowlarr:
 
 plex:
   enabled: true
+  # General configuration passed to plex subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    plex_ingress_host: k8s-plex.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+    certificate:
+      enabled: false
+      secretName: k8s-mediaserver-tls
+  # Plex specific configuration
   claim: "CHANGEME"
   externalSecret: null
   replicaCount: 1
@@ -360,6 +541,32 @@ plex:
 
 jellyfin:
   enabled: false
+  # General configuration passed to jellyfin subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    jellyfin_ingress_host: k8s-jelly.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Jellyfin specific configuration
   replicaCount: 1
   container:
     image: docker.io/linuxserver/jellyfin
@@ -402,6 +609,31 @@ jellyfin:
 
 seerr:
   enabled: true
+  # General configuration passed to seerr subchart
+  general:
+    ingress_host: k8s-mediaserver.k8s.test
+    podDistribution: cluster
+    initContainer:
+      image: docker.io/ubuntu
+      tag: 24.04
+    puid: 1000
+    pgid: 1000
+    storage:
+      customVolume: false
+      pvcName: mediaserver-pvc
+      accessMode: ""
+      pvcStorageClass: ""
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        config: config
+      volumes: {}
+    ingress:
+      ingressClassName: ""
+    nodeSelector: {}
+    tolerations: []
+  # Seerr specific configuration
   container:
     image: ghcr.io/seerr-team/seerr
     # https://github.com/seerr-team/seerr/releases/latest

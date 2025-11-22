@@ -1,0 +1,21 @@
+---
+### SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr
+  labels:
+    {{- include "prowlarr.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.container.port }}
+      protocol: TCP
+{{ if eq .Values.service.type "NodePort" }}
+      nodePort: {{ .Values.service.nodePort }}
+{{ end }}
+      name: prowlarr-port
+  selector:
+    app: prowlarr
+

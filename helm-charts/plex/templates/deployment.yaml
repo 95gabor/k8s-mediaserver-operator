@@ -1,0 +1,117 @@
+---
+### DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  labels:
+    {{- include "plex.labels" . | nindent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "plex.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "plex.selectorLabels" . | nindent 8 }}
+        app: plex
+    spec:
+      volumes:
+        {{- if not .Values.general.storage.customVolume }}
+        - name: mediaserver-volume
+          persistentVolumeClaim:
+            claimName: {{ .Values.general.storage.pvcName }}
+        {{- else }}
+        - name: mediaserver-volume
+          {{- toYaml .Values.general.storage.volumes | nindent 10 }}
+        {{- end }}
+        {{- if .Values.volume }}
+        - name: {{ .Values.volume.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.volume.name }}
+        {{- end }}
+        {{- if and (.Capabilities.APIVersions.Has "cert-manager.io/v1") .Values.general.certificate.enabled }}
+        - name: tls-secret
+          secret:
+            secretName: {{ .Values.general.certificate.secretName }}  # Reference to the generated secret
+        {{- end }}
+      containers:
+        - name: plex
+          envFrom:
+            - configMapRef:
+                name: plex-config
+            {{ if .Values.externalSecret }}
+            - secretRef:
+                name: {{ .Values.externalSecret }}
+            {{ end }}
+          image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              port: {{ .Values.container.port }}
+              path: "/identity"
+              scheme: HTTPS
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            timeoutSeconds: 20
+          ports:
+            - name: plex-port
+              containerPort: {{ .Values.container.port }}
+              protocol: TCP
+          volumeMounts:
+          {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /config
+          {{- else }}
+            - name: mediaserver-volume
+              mountPath: /config
+              subPath: "{{ .Values.general.storage.subPaths.config }}/plex"
+          {{- end }}
+            - name: mediaserver-volume
+              mountPath: /movies
+              subPath: "{{ .Values.general.storage.subPaths.movies }}"
+            - name: mediaserver-volume
+              mountPath: /tv
+              subPath: "{{ .Values.general.storage.subPaths.tv }}"
+          {{- if and (.Capabilities.APIVersions.Has "cert-manager.io/v1") .Values.general.certificate.enabled }}
+            - name: tls-secret
+              mountPath: "/etc/tls"  # Path in the container where the certificate will be mounted
+              readOnly: true
+          {{- end }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with merge .Values.container.nodeSelector .Values.general.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.general.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if eq .Values.general.podDistribution "cluster" }}
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/instance
+                  operator: In
+                  values:
+                  - {{ .Release.Name }}
+              topologyKey: "kubernetes.io/hostname"
+            weight: 100
+      {{- else if eq .Values.general.podDistribution "spread" }}
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        whenUnsatisfiable: "ScheduleAnyway"
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- end }}

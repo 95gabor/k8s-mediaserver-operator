@@ -1,0 +1,10 @@
+---
+### CONFIGMAP
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellyfin-config
+data:
+  PGID: "{{ .Values.general.pgid }}"
+  PUID: "{{ .Values.general.puid }}"
+

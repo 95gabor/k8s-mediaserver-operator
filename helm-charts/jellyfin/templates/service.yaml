@@ -1,0 +1,20 @@
+---
+### SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin
+  labels:
+    {{- include "jellyfin.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.container.port }}
+      protocol: TCP
+      name: jellyfin-port
+{{ if eq .Values.service.type "NodePort" }}
+      nodePort: {{ .Values.service.nodePort }}
+{{ end }}
+  selector:
+    app: jellyfin

@@ -1,0 +1,43 @@
+# {{ .Name }}
+
+![Version: {{ .Version }}](https://img.shields.io/badge/Version-{{ .Version }}-informational?style=flat-square) ![Type: {{ .Type }}](https://img.shields.io/badge/Type-{{ .Type }}-informational?style=flat-square) ![AppVersion: {{ .AppVersion }}](https://img.shields.io/badge/AppVersion-{{ .AppVersion }}-informational?style=flat-square)
+
+{{ .Description }}
+
+## Chart Repo
+
+Add the following repo to use the chart:
+
+```bash
+helm repo add k8s-mediaserver-operator https://95gabor.github.io/k8s-mediaserver-operator
+helm repo update
+```
+
+### Installation
+
+- Install/upgrade in a namespace (using local chart directory):
+
+```bash
+helm upgrade --install {{ .Name }} . \
+  -n {{ .Name }} --create-namespace \
+  -f values.yaml
+```
+
+- Or install from a chart repository:
+
+```bash
+helm upgrade --install {{ .Name }} k8s-mediaserver-operator/{{ .Name }} \
+  -n {{ .Name }} --create-namespace \
+  -f values.yaml
+```
+
+- Uninstall:
+
+```bash
+helm uninstall {{ .Name }} -n {{ .Name }}
+```
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}
+
