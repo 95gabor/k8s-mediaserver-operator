@@ -85,6 +85,6 @@ jobs:
           wget --retry-on-http-error=503,500 ${{ env.ingress_host }}/radarr
           wget --retry-on-http-error=503,500 ${{ env.ingress_host }}/sabnzbd
           wget --retry-on-http-error=503,500 ${{ env.ingress_host }}/prowlarr
-          wget --retry-on-http-error=503,500 ${{ env.ingress_host }}/jackett          
+          wget --retry-on-http-error=503,500 ${{ env.ingress_host }}/jackett
           curl ${{ env.plex_ingress_host }}
           curl ${{ env.jellyfin_ingress_host }}
