@@ -3,6 +3,29 @@ entries:
   jackett:
   - apiVersion: v2
     appVersion: 0.24.338
+    created: "2025-11-28T23:07:04.726672304Z"
+    description: A Helm chart for Jackett
+    digest: ab97a9e4ed9fac8a2342fb3fa780d05fa0dc3a86559c6d30d718ad82b4cec087
+    home: https://github.com/Jackett/Jackett
+    icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-logo.png
+    keywords:
+    - jackett
+    - torrent
+    - tracker
+    - indexer
+    - media
+    maintainers:
+    - name: 95gabor
+    name: jackett
+    sources:
+    - https://github.com/Jackett/Jackett
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.7/jackett-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 0.24.338
     created: "2025-11-22T16:45:57.234879907Z"
     description: A Helm chart for Jackett
     digest: 6852e10a488a01819833b0972010f5735221a20561194de8f70377d3b6ed4e97
@@ -117,6 +140,29 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.1.tgz
     version: 0.1.1
   jellyfin:
+  - apiVersion: v2
+    appVersion: 10.11.3
+    created: "2025-11-28T23:07:04.93155635Z"
+    description: A Helm chart for Jellyfin
+    digest: c88211b847c2b62782097d5fa6aa0fb8137d380e40331ae9b868b6b712622473
+    home: https://jellyfin.org/
+    icon: https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/icon-transparent.svg
+    keywords:
+    - jellyfin
+    - media
+    - server
+    - streaming
+    - open-source
+    maintainers:
+    - name: 95gabor
+    name: jellyfin
+    sources:
+    - https://github.com/jellyfin/jellyfin
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.7/jellyfin-0.1.7.tgz
+    version: 0.1.7
   - apiVersion: v2
     appVersion: 10.11.3
     created: "2025-11-22T16:45:57.372352808Z"
@@ -816,6 +862,29 @@ entries:
   plex:
   - apiVersion: v2
     appVersion: 1.42.2
+    created: "2025-11-28T23:07:05.161017022Z"
+    description: A Helm chart for Plex Media Server
+    digest: f50ee163257f7a3cbdbcd4de3e54d19f2cd1718cef559b6f88440c07ece84c01
+    home: https://www.plex.tv/
+    icon: https://simpleicons.org/icons/plex.svg
+    keywords:
+    - plex
+    - media
+    - server
+    - streaming
+    - video
+    maintainers:
+    - name: 95gabor
+    name: plex
+    sources:
+    - https://github.com/plexinc/pms-docker
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.7/plex-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.42.2
     created: "2025-11-22T16:45:57.502813191Z"
     description: A Helm chart for Plex Media Server
     digest: da9e46e19fd2b0e2f523de026893a63dda86d385e1724cc86e5df8ca6bf789ad
@@ -907,6 +976,29 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/plex-0.1.1.tgz
     version: 0.1.1
   prowlarr:
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-11-28T23:07:05.488164333Z"
+    description: A Helm chart for Prowlarr
+    digest: 22b909456a57be2b0a648e86aad3f783da0b4aedf8e335d8b2f417d5823f679a
+    home: https://github.com/Prowlarr/Prowlarr
+    icon: https://raw.githubusercontent.com/Prowlarr/Prowlarr/develop/Logo/256.png
+    keywords:
+    - prowlarr
+    - indexer
+    - tracker
+    - pvr
+    - media
+    maintainers:
+    - name: 95gabor
+    name: prowlarr
+    sources:
+    - https://github.com/Prowlarr/Prowlarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.7/prowlarr-0.1.7.tgz
+    version: 0.1.7
   - apiVersion: v2
     appVersion: 2.3.0
     created: "2025-11-22T16:45:57.659845897Z"
@@ -1025,6 +1117,29 @@ entries:
   radarr:
   - apiVersion: v2
     appVersion: 6.0.4
+    created: "2025-11-28T23:07:05.686898042Z"
+    description: A Helm chart for Radarr
+    digest: 3157f2309a5000bff9e944682ea8eb2ababf9a631ba555d24087824249a1a0a5
+    home: https://radarr.video/
+    icon: https://raw.githubusercontent.com/Radarr/Radarr/develop/Logo/256.png
+    keywords:
+    - radarr
+    - movies
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: radarr
+    sources:
+    - https://github.com/Radarr/Radarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.7/radarr-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 6.0.4
     created: "2025-11-22T16:45:57.777890143Z"
     description: A Helm chart for Radarr
     digest: 128bbec1ce30514fff07de6b7be7216d4e22d7b5b24108b102f41de2bd4c56b7
@@ -1139,6 +1254,29 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.1.tgz
     version: 0.1.1
   sabnzbd:
+  - apiVersion: v2
+    appVersion: 4.5.5
+    created: "2025-11-28T23:07:05.907797032Z"
+    description: A Helm chart for SABnzbd
+    digest: 23c4af00a483e2abd475825d066b990a3dedfbd8b999634b0688788335fd7de9
+    home: https://sabnzbd.org/
+    icon: https://media.sys.truenas.net/apps/sabnzbd/icons/icon.svg
+    keywords:
+    - sabnzbd
+    - usenet
+    - nzb
+    - download
+    - media
+    maintainers:
+    - name: 95gabor
+    name: sabnzbd
+    sources:
+    - https://github.com/sabnzbd/sabnzbd
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sabnzbd-0.1.7/sabnzbd-0.1.7.tgz
+    version: 0.1.7
   - apiVersion: v2
     appVersion: 4.5.5
     created: "2025-11-22T16:45:57.941685623Z"
@@ -1376,6 +1514,30 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.1.tgz
     version: 0.1.1
   sonarr:
+  - apiVersion: v2
+    appVersion: 4.0.16
+    created: "2025-11-28T23:07:06.126436348Z"
+    description: A Helm chart for Sonarr
+    digest: 388a62c845d83cbedb4dac1ef4bfd2d449f8dd56165251fc3803be5f012f619d
+    home: https://sonarr.tv/
+    icon: https://raw.githubusercontent.com/Sonarr/Sonarr/develop/Logo/256.png
+    keywords:
+    - sonarr
+    - tv
+    - series
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: sonarr
+    sources:
+    - https://github.com/Sonarr/Sonarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.7/sonarr-0.1.7.tgz
+    version: 0.1.7
   - apiVersion: v2
     appVersion: 4.0.16
     created: "2025-11-22T16:45:58.238200269Z"
@@ -1658,4 +1820,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-11-28T22:48:43.080621734Z"
+generated: "2025-11-28T23:07:06.126566552Z"
