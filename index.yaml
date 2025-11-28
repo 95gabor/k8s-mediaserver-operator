@@ -1432,6 +1432,29 @@ entries:
   transmission:
   - apiVersion: v2
     appVersion: 4.0.6
+    created: "2025-11-28T22:45:39.86748824Z"
+    description: A Helm chart for Transmission
+    digest: 92bcff080ce8b1374771766809e9c9cf4b53f7d5fc3a0d11b7198887f1134ab8
+    home: https://transmissionbt.com/
+    icon: https://simpleicons.org/icons/transmission.svg
+    keywords:
+    - transmission
+    - torrent
+    - bittorrent
+    - download
+    - media
+    maintainers:
+    - name: 95gabor
+    name: transmission
+    sources:
+    - https://github.com/transmission/transmission
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.8/transmission-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 4.0.6
     created: "2025-11-28T22:08:41.389349233Z"
     description: A Helm chart for Transmission
     digest: ef7906db5acb024209e4df06f350c7adf4ada3a71558d2b5c0b76f191bcc14ef
@@ -1568,4 +1591,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-11-28T22:12:02.175470298Z"
+generated: "2025-11-28T22:45:39.867601543Z"
