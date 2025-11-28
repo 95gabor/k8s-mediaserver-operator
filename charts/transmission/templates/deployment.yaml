@@ -69,6 +69,8 @@ spec:
             allowPrivilegeEscalation: false
             runAsNonRoot: false
             capabilities:
+              add:
+                - CHOWN
               drop:
                 - ALL
       securityContext:
