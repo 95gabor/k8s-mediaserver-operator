@@ -19,6 +19,40 @@ spec:
         {{- include "plex.selectorLabels" . | nindent 8 }}
         app: plex
     spec:
+      initContainers:
+        - name: fix-permissions
+          image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
+          command:
+            - sh
+            - '-c'
+            - chown -R {{ .Values.general.puid }}:{{ .Values.general.pgid }} /config /movies /tv && chown {{ .Values.general.puid }}:{{ .Values.general.pgid }} /run
+          volumeMounts:
+            - mountPath: /run
+              name: run-tmp
+            {{- if .Values.volume }}
+            - name: {{ .Values.volume.name }}
+              mountPath: /config
+            {{- else }}
+            - name: mediaserver-volume
+              mountPath: /config
+              subPath: "{{ .Values.general.storage.subPaths.config }}/plex"
+            {{- end }}
+            - name: mediaserver-volume
+              mountPath: /movies
+              subPath: "{{ .Values.general.storage.subPaths.movies }}"
+            - name: mediaserver-volume
+              mountPath: /tv
+              subPath: "{{ .Values.general.storage.subPaths.tv }}"
+          securityContext:
+            runAsGroup: 0
+            runAsUser: 0
+            allowPrivilegeEscalation: false
+            runAsNonRoot: false
+            capabilities:
+              add:
+                - CHOWN
+              drop:
+                - ALL
       volumes:
         {{- if not .Values.general.storage.customVolume }}
         - name: mediaserver-volume
@@ -36,6 +70,9 @@ spec:
         - name: tmp
           emptyDir:
             medium: Memory
+        - name: run-tmp
+          emptyDir:
+            medium: Memory
         {{- if and (.Capabilities.APIVersions.Has "cert-manager.io/v1") .Values.general.certificate.enabled }}
         - name: tls-secret
           secret:
@@ -43,9 +80,7 @@ spec:
         {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
-        {{- if not .Values.general.initContainer.runAsRoot }}
-        runAsNonRoot: true
-        {{- end }}
+        runAsNonRoot: false
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -81,6 +116,8 @@ spec:
               containerPort: {{ .Values.container.port }}
               protocol: TCP
           volumeMounts:
+            - mountPath: /run
+              name: run-tmp
             - name: tmp
               mountPath: /tmp
             {{- if .Values.volume }}
