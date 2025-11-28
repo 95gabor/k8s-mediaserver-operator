@@ -8,10 +8,6 @@ general:
   initContainer:
     image: docker.io/ubuntu
     tag: 24.04
-    # Set to false if cluster enforces non-root policy
-    # Note: When false, init container cannot chown root-owned files
-    # fsGroup will handle group ownership automatically
-    runAsRoot: true
   puid: 1000
   pgid: 1000
   storage:

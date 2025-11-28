@@ -20,49 +20,35 @@ spec:
         app: seerr
     spec:
       initContainers:
-        - name: config-seerr
+        - name: fix-permissions
           image: "{{ .Values.general.initContainer.image }}:{{ .Values.general.initContainer.tag }}"
           command:
-            - /bin/bash
-            - -c
-            - |
-              mkdir -p /app/config/logs
-              {{- if .Values.general.initContainer.runAsRoot }}
-              chown -R {{ .Values.general.puid }}:{{ .Values.general.pgid }} /app/config
-              {{- end }}
-              chmod -R 755 /app/config
+            - sh
+            - '-c'
+            - chown -R {{ .Values.general.puid }}:{{ .Values.general.pgid }} /app/config && chmod -R 755 /app/config
           volumeMounts:
             {{- if .Values.volume }}
-              - name: {{ .Values.volume.name }}
-                mountPath: /app/config
+            - name: {{ .Values.volume.name }}
+              mountPath: /app/config
             {{- else }}
-              - name: mediaserver-volume
-                mountPath: /app/config
-                subPath: "{{ .Values.general.storage.subPaths.config }}/seerr"
+            - name: mediaserver-volume
+              mountPath: /app/config
+              subPath: "{{ .Values.general.storage.subPaths.config }}/seerr"
             {{- end }}
           securityContext:
-            {{- if .Values.general.initContainer.runAsRoot }}
-            runAsUser: 0
             runAsGroup: 0
+            runAsUser: 0
             allowPrivilegeEscalation: false
+            runAsNonRoot: false
             capabilities:
-              drop:
-                - ALL
               add:
                 - CHOWN
-            {{- else }}
-            runAsUser: {{ .Values.general.puid }}
-            runAsGroup: {{ .Values.general.pgid }}
-            allowPrivilegeEscalation: false
-            capabilities:
+                - FOWNER
               drop:
                 - ALL
-            {{- end }}
       securityContext:
         fsGroup: {{ .Values.general.pgid }}
-        {{- if not .Values.general.initContainer.runAsRoot }}
-        runAsNonRoot: true
-        {{- end }}
+        runAsNonRoot: false
         seccompProfile:
           type: RuntimeDefault
       containers:
