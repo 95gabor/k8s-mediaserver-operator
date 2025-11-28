@@ -1,6 +1,6 @@
 # seerr
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: sha-bde322d](https://img.shields.io/badge/AppVersion-sha-bde322d-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: sha-bde322d](https://img.shields.io/badge/AppVersion-sha-bde322d-informational?style=flat-square)
 
 A Helm chart for Seerr
 
@@ -49,7 +49,6 @@ helm uninstall seerr -n seerr
 | general.ingress.ingressClassName | string | `""` |  |
 | general.ingress_host | string | `"k8s-mediaserver.k8s.test"` |  |
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |
-| general.initContainer.runAsRoot | bool | `true` |  |
 | general.initContainer.tag | float | `24.04` |  |
 | general.nodeSelector | object | `{}` |  |
 | general.pgid | int | `1000` |  |
