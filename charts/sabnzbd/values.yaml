@@ -32,7 +32,7 @@ container:
   image: docker.io/linuxserver/sabnzbd
   # https://hub.docker.com/r/linuxserver/sabnzbd/tags
   # https://github.com/linuxserver/docker-sabnzbd/releases/latest
-  tag: 4.5.5
+  tag: ""
   nodeSelector: {}
   port:
     http: 8080

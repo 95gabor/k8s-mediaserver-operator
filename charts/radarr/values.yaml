@@ -31,7 +31,7 @@ container:
   image: docker.io/linuxserver/radarr
   # https://hub.docker.com/r/linuxserver/radarr/tags
   # https://github.com/linuxserver/docker-radarr/releases/latest
-  tag: 6.0.4
+  tag: ""
   nodeSelector: {}
   port: 7878
   extraEnv: []

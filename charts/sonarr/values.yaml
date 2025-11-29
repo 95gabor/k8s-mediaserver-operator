@@ -31,7 +31,7 @@ container:
   image: docker.io/linuxserver/sonarr
   # https://hub.docker.com/r/linuxserver/sonarr/tags
   # https://github.com/linuxserver/docker-sonarr/releases/latest
-  tag: 4.0.16
+  tag: ""
   nodeSelector: {}
   port: 8989
   extraEnv: []

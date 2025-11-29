@@ -31,7 +31,7 @@ container:
   image: docker.io/linuxserver/prowlarr
   # https://hub.docker.com/r/linuxserver/prowlarr/tags
   # https://github.com/linuxserver/docker-prowlarr/releases/latest
-  tag: 2.3.0
+  tag: ""
   nodeSelector: {}
   port: 9696
 

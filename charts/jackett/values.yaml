@@ -31,7 +31,7 @@ container:
   image: docker.io/linuxserver/jackett
   # https://hub.docker.com/r/linuxserver/jackett/tags
   # https://github.com/linuxserver/docker-jackett/releases/latest
-  tag: 0.24.338
+  tag: ""
   nodeSelector: {}
   port: 9117
 

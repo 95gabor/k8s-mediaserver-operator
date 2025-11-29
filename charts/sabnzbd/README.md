@@ -1,6 +1,6 @@
 # sabnzbd
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.5.5](https://img.shields.io/badge/AppVersion-4.5.5-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.5.5](https://img.shields.io/badge/AppVersion-4.5.5-informational?style=flat-square)
 
 A Helm chart for SABnzbd
 
@@ -45,7 +45,7 @@ helm uninstall sabnzbd -n sabnzbd
 | container.nodeSelector | object | `{}` |  |
 | container.port.http | int | `8080` |  |
 | container.port.https | int | `9090` |  |
-| container.tag | string | `"4.5.5"` |  |
+| container.tag | string | `""` |  |
 | general.ingress.ingressClassName | string | `""` |  |
 | general.ingress_host | string | `"k8s-mediaserver.k8s.test"` |  |
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |

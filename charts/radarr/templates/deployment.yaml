@@ -89,7 +89,7 @@ spec:
             {{- with .Values.container.extraEnv }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
-          image: "{{ .Values.container.image }}:{{ .Values.container.tag }}"
+          image: "{{ .Values.container.image }}:{{ .Values.container.tag | default .Chart.AppVersion }}"
           imagePullPolicy: Always
           securityContext:
             runAsUser: {{ .Values.general.puid }}

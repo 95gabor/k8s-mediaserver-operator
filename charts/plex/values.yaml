@@ -39,7 +39,7 @@ container:
   image: docker.io/linuxserver/plex
   # https://hub.docker.com/r/linuxserver/plex/tags
   # https://github.com/linuxserver/docker-plex/releases/latest
-  tag: 1.42.2
+  tag: ""
   nodeSelector: {}
   port: 32400
 
