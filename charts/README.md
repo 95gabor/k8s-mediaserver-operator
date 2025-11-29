@@ -29,24 +29,25 @@ Each service can be installed independently:
 ### Install All Services (Umbrella Chart)
 
 ```bash
-helm dependency update ./k8s-mediaserver
-helm upgrade --install k8s-mediaserver ./k8s-mediaserver \
+# From the repository root
+helm dependency update ./charts/k8s-mediaserver
+helm upgrade --install k8s-mediaserver ./charts/k8s-mediaserver \
   -n k8s-mediaserver --create-namespace \
-  -f ./k8s-mediaserver/values.yaml
+  -f ./charts/k8s-mediaserver/values.yaml
 ```
 
 ### Install Individual Services
 
 ```bash
-# Example: Install only Sonarr
-helm upgrade --install sonarr ./sonarr \
+# Example: Install only Sonarr (from repository root)
+helm upgrade --install sonarr ./charts/sonarr \
   -n sonarr --create-namespace \
-  -f ./sonarr/values.yaml
+  -f ./charts/sonarr/values.yaml
 
-# Example: Install only Plex
-helm upgrade --install plex ./plex \
+# Example: Install only Plex (from repository root)
+helm upgrade --install plex ./charts/plex \
   -n plex --create-namespace \
-  -f ./plex/values.yaml
+  -f ./charts/plex/values.yaml
 ```
 
 ## Chart Repository
