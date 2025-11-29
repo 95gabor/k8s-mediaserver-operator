@@ -40,16 +40,16 @@ helm uninstall {{ .Name }} -n {{ .Name }}
 ## Service Chart Documentation
 
 > **Note:** This umbrella chart only contains overrides and service-specific configurations.
-> For complete documentation of all available values for each service chart, see the individual chart README files:
-> - [sonarr](../sonarr/README.md)
-> - [radarr](../radarr/README.md)
-> - [jackett](../jackett/README.md)
-> - [prowlarr](../prowlarr/README.md)
-> - [transmission](../transmission/README.md)
-> - [sabnzbd](../sabnzbd/README.md)
-> - [plex](../plex/README.md)
-> - [jellyfin](../jellyfin/README.md)
-> - [seerr](../seerr/README.md)
+> For complete documentation of all available values for each service chart, see the individual chart directories:
+> - [sonarr](../sonarr/)
+> - [radarr](../radarr/)
+> - [jackett](../jackett/)
+> - [prowlarr](../prowlarr/)
+> - [transmission](../transmission/)
+> - [sabnzbd](../sabnzbd/)
+> - [plex](../plex/)
+> - [jellyfin](../jellyfin/)
+> - [seerr](../seerr/)
 
 {{ template "chart.valuesSection" . }}
 
