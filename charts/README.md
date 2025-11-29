@@ -8,6 +8,8 @@ This directory contains Helm charts for deploying media server components on Kub
 
 - **[k8s-mediaserver](k8s-mediaserver/)** - Umbrella chart that deploys all services together with shared configuration
 
+> **Note:** The umbrella chart only contains overrides and service-specific configurations. For complete documentation of all available values for each service chart, see the individual chart directories listed below.
+
 ### Individual Service Charts
 
 Each service can be installed independently:
@@ -71,6 +73,17 @@ Each chart includes detailed documentation in its README.md file, generated from
 - Configuration options
 - Installation instructions
 - Examples and use cases
+
+> **Note:** The umbrella chart (`k8s-mediaserver`) only contains overrides and service-specific configurations. For complete documentation of all available values for each service chart, see the individual chart directories:
+> - [sonarr](sonarr/)
+> - [radarr](radarr/)
+> - [jackett](jackett/)
+> - [prowlarr](prowlarr/)
+> - [transmission](transmission/)
+> - [sabnzbd](sabnzbd/)
+> - [plex](plex/)
+> - [jellyfin](jellyfin/)
+> - [seerr](seerr/)
 
 ## Chart Structure
 
