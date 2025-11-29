@@ -144,7 +144,18 @@ With default settings, your applications will run at these paths:
 
 The chart is quite simple to configure, with a low number of parameters to avoid confusion, while still allowing customization to fit the resources inside your cluster.
 
-See the [values.yaml](charts/k8s-mediaserver/values.yaml) file for all available configuration options, or check the [Helm chart README](charts/k8s-mediaserver/README.md) for detailed documentation.
+> **Note:** The umbrella chart (`k8s-mediaserver`) only contains overrides and service-specific configurations. For complete documentation of all available values for each service chart, see the individual chart directories:
+> - [sonarr](charts/sonarr/)
+> - [radarr](charts/radarr/)
+> - [jackett](charts/jackett/)
+> - [prowlarr](charts/prowlarr/)
+> - [transmission](charts/transmission/)
+> - [sabnzbd](charts/sabnzbd/)
+> - [plex](charts/plex/)
+> - [jellyfin](charts/jellyfin/)
+> - [seerr](charts/seerr/)
+
+See the [values.yaml](charts/k8s-mediaserver/values.yaml) file for umbrella chart configuration options, or check the [Helm chart README](charts/k8s-mediaserver/README.md) for detailed documentation.
 
 ### General Configuration
 
