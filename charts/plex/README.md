@@ -1,6 +1,6 @@
 # plex
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.42.2](https://img.shields.io/badge/AppVersion-1.42.2-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.42.2](https://img.shields.io/badge/AppVersion-1.42.2-informational?style=flat-square)
 
 A Helm chart for Plex Media Server
 
@@ -45,7 +45,7 @@ helm uninstall plex -n plex
 | container.image | string | `"docker.io/linuxserver/plex"` |  |
 | container.nodeSelector | object | `{}` |  |
 | container.port | int | `32400` |  |
-| container.tag | string | `"1.42.2"` |  |
+| container.tag | string | `""` |  |
 | externalSecret | string | `nil` |  |
 | general.certificate.enabled | bool | `false` |  |
 | general.certificate.secretName | string | `"k8s-mediaserver-tls"` |  |

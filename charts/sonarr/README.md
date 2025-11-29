@@ -1,6 +1,6 @@
 # sonarr
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.16](https://img.shields.io/badge/AppVersion-4.0.16-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.16](https://img.shields.io/badge/AppVersion-4.0.16-informational?style=flat-square)
 
 A Helm chart for Sonarr
 
@@ -45,7 +45,7 @@ helm uninstall sonarr -n sonarr
 | container.image | string | `"docker.io/linuxserver/sonarr"` |  |
 | container.nodeSelector | object | `{}` |  |
 | container.port | int | `8989` |  |
-| container.tag | string | `"4.0.16"` |  |
+| container.tag | string | `""` |  |
 | general.ingress.ingressClassName | string | `""` |  |
 | general.ingress_host | string | `"k8s-mediaserver.k8s.test"` |  |
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |

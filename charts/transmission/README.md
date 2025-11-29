@@ -1,6 +1,6 @@
 # transmission
 
-![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.6](https://img.shields.io/badge/AppVersion-4.0.6-informational?style=flat-square)
+![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.6](https://img.shields.io/badge/AppVersion-4.0.6-informational?style=flat-square)
 
 A Helm chart for Transmission
 
@@ -48,7 +48,7 @@ helm uninstall transmission -n transmission
 | container.nodeSelector | object | `{}` |  |
 | container.port.peer | int | `51413` |  |
 | container.port.utp | int | `9091` |  |
-| container.tag | string | `"4.0.6"` |  |
+| container.tag | string | `""` |  |
 | general.ingress.ingressClassName | string | `""` |  |
 | general.ingress_host | string | `"k8s-mediaserver.k8s.test"` |  |
 | general.initContainer.image | string | `"docker.io/ubuntu"` |  |
