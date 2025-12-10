@@ -2072,6 +2072,30 @@ entries:
     version: 0.1.1
   seerr:
   - apiVersion: v2
+    appVersion: sha-15356df
+    created: "2025-12-10T20:19:41.547654163Z"
+    description: A Helm chart for Seerr
+    digest: ff6d3e6f15dba59ecf32560bcf5ca7902db98affff1942cf2ebc57a02bda3dcb
+    home: https://github.com/seerr-team/seerr
+    icon: https://raw.githubusercontent.com/seerr-team/seerr/main/public/logo_full.svg
+    keywords:
+    - seerr
+    - media
+    - request
+    - discovery
+    - plex
+    - jellyfin
+    maintainers:
+    - name: 95gabor
+    name: seerr
+    sources:
+    - https://github.com/seerr-team/seerr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.11/seerr-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
     appVersion: sha-e842036
     created: "2025-12-10T20:02:59.424600686Z"
     description: A Helm chart for Seerr
@@ -2689,4 +2713,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-10T20:14:44.035333987Z"
+generated: "2025-12-10T20:19:41.54785647Z"
