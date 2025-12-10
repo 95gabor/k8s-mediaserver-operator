@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   jackett:
   - apiVersion: v2
+    appVersion: 0.24.429
+    created: "2025-12-10T19:46:04.329451269Z"
+    description: A Helm chart for Jackett
+    digest: 0795011b708cd102cf69f9643fd7bd097e2b14642f360822c298a97b64ab5e63
+    home: https://github.com/Jackett/Jackett
+    icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-logo.png
+    keywords:
+    - jackett
+    - torrent
+    - tracker
+    - indexer
+    - media
+    maintainers:
+    - name: 95gabor
+    name: jackett
+    sources:
+    - https://github.com/Jackett/Jackett
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.9/jackett-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
     appVersion: 0.24.372
     created: "2025-11-29T12:37:26.689062201Z"
     description: A Helm chart for Jackett
@@ -163,6 +186,29 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.1.tgz
     version: 0.1.1
   jellyfin:
+  - apiVersion: v2
+    appVersion: 10.11.4
+    created: "2025-12-10T19:46:04.467301667Z"
+    description: A Helm chart for Jellyfin
+    digest: 2c6b0d2e893e3108142978c04d41b5aa1b6164136520844b3fdf913b53916581
+    home: https://jellyfin.org/
+    icon: https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/icon-transparent.svg
+    keywords:
+    - jellyfin
+    - media
+    - server
+    - streaming
+    - open-source
+    maintainers:
+    - name: 95gabor
+    name: jellyfin
+    sources:
+    - https://github.com/jellyfin/jellyfin
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jellyfin-0.1.9/jellyfin-0.1.9.tgz
+    version: 0.1.9
   - apiVersion: v2
     appVersion: 10.11.3
     created: "2025-11-29T12:37:26.849231512Z"
@@ -1314,6 +1360,29 @@ entries:
     version: 0.1.1
   prowlarr:
   - apiVersion: v2
+    appVersion: 2.3.0.5236
+    created: "2025-12-10T19:46:04.675708013Z"
+    description: A Helm chart for Prowlarr
+    digest: 1473de58784eed3ae80f7040edb1bb9d392a52a47a69be5c3d75194fce6cb596
+    home: https://github.com/Prowlarr/Prowlarr
+    icon: https://raw.githubusercontent.com/Prowlarr/Prowlarr/develop/Logo/256.png
+    keywords:
+    - prowlarr
+    - indexer
+    - tracker
+    - pvr
+    - media
+    maintainers:
+    - name: 95gabor
+    name: prowlarr
+    sources:
+    - https://github.com/Prowlarr/Prowlarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.9/prowlarr-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
     appVersion: 2.3.0
     created: "2025-11-29T12:37:27.141870032Z"
     description: A Helm chart for Prowlarr
@@ -1475,6 +1544,29 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.1.tgz
     version: 0.1.1
   radarr:
+  - apiVersion: v2
+    appVersion: 6.0.4.10291
+    created: "2025-12-10T19:46:04.800847153Z"
+    description: A Helm chart for Radarr
+    digest: 28fb31acf182ed7c9b0126122019418b2b743006a07c7d6c4f437e29b49354cb
+    home: https://radarr.video/
+    icon: https://raw.githubusercontent.com/Radarr/Radarr/develop/Logo/256.png
+    keywords:
+    - radarr
+    - movies
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: radarr
+    sources:
+    - https://github.com/Radarr/Radarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.9/radarr-0.1.9.tgz
+    version: 0.1.9
   - apiVersion: v2
     appVersion: 6.0.4
     created: "2025-11-29T12:37:27.25702282Z"
@@ -1800,6 +1892,30 @@ entries:
     version: 0.1.1
   seerr:
   - apiVersion: v2
+    appVersion: 2.7.3
+    created: "2025-12-10T19:46:04.956187446Z"
+    description: A Helm chart for Seerr
+    digest: ca7c91f9258d69cdba0895fb3737849f4dae1771621b3eb242b1d088a7f4a138
+    home: https://github.com/seerr-team/seerr
+    icon: https://raw.githubusercontent.com/seerr-team/seerr/main/public/logo_full.svg
+    keywords:
+    - seerr
+    - media
+    - request
+    - discovery
+    - plex
+    - jellyfin
+    maintainers:
+    - name: 95gabor
+    name: seerr
+    sources:
+    - https://github.com/seerr-team/seerr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.9/seerr-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
     appVersion: sha-c3b9ea6
     created: "2025-11-29T12:37:27.564389848Z"
     description: A Helm chart for Seerr
@@ -1968,6 +2084,30 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.1.tgz
     version: 0.1.1
   sonarr:
+  - apiVersion: v2
+    appVersion: 4.0.16.2944
+    created: "2025-12-10T19:46:05.11507182Z"
+    description: A Helm chart for Sonarr
+    digest: 317492d71e19d34c9ceaa7f8373d6d418588e8541980cde96aa996ea87c744a8
+    home: https://sonarr.tv/
+    icon: https://raw.githubusercontent.com/Sonarr/Sonarr/develop/Logo/256.png
+    keywords:
+    - sonarr
+    - tv
+    - series
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: sonarr
+    sources:
+    - https://github.com/Sonarr/Sonarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.9/sonarr-0.1.9.tgz
+    version: 0.1.9
   - apiVersion: v2
     appVersion: 4.0.16
     created: "2025-11-29T12:37:27.716746311Z"
@@ -2321,4 +2461,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-11-29T12:50:22.079447625Z"
+generated: "2025-12-10T19:46:05.11529573Z"
