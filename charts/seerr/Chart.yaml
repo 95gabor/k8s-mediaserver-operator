@@ -2,13 +2,15 @@ apiVersion: v2
 name: seerr
 description: A Helm chart for Seerr
 type: application
-version: 0.1.10
+version: 0.1.11
 # WARNING: Seerr uses commit hash tags (sha-<hash>), NOT version tags!
 # Docker image tags are in format: ghcr.io/seerr-team/seerr:sha-<commit-hash>
-# To find the commit hash for a release version, check the GitHub release page.
-# Example: v2.7.3 release has commit hash e842036, so use "sha-e842036"
-# Previous format was: "sha-c3b9ea6" (for reference)
-appVersion: "sha-e842036"
+# IMPORTANT: Container images are built from CI commits, NOT release tag commits!
+# The release tag commit (e842036 for v2.7.3) may not match the container image tag.
+# Check the container registry (https://github.com/seerr-team/seerr/pkgs/container/seerr)
+# to find the actual available tags. Use the latest tag that exists in the registry.
+# Previous working tags: "sha-c3b9ea6", "sha-e842036" (not found in registry)
+appVersion: "sha-15356df"
 icon: https://raw.githubusercontent.com/seerr-team/seerr/main/public/logo_full.svg
 home: https://github.com/seerr-team/seerr
 sources:
