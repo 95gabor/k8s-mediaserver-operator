@@ -101,8 +101,36 @@ jobs:
 
                   def get_commit_hash_from_release(release):
                       """Extract commit hash from release"""
-                      if release and "target_commitish" in release:
-                          return release["target_commitish"][:7]  # First 7 chars
+                      if not release:
+                          return None
+
+                      # Try target_commitish first
+                      if "target_commitish" in release:
+                          commit_ref = release["target_commitish"]
+                          # If it's already a commit hash (40 chars), use it
+                          if len(commit_ref) == 40:
+                              return commit_ref[:7]
+
+                      # If target_commitish is a branch/tag, get commit from the tag
+                      if "tag_name" in release:
+                          tag_name = release["tag_name"]
+                          repo = release.get("url", "").split("/repos/")[1].split("/releases")[0] if "/repos/" in release.get("url", "") else None
+                          if repo:
+                              # Get commit SHA from the tag
+                              tag_url = f"https://api.github.com/repos/{repo}/git/refs/tags/{tag_name}"
+                              tag_response = requests.get(tag_url)
+                              if tag_response.status_code == 200:
+                                  tag_data = tag_response.json()
+                                  if "object" in tag_data and "sha" in tag_data["object"]:
+                                      return tag_data["object"]["sha"][:7]
+                              # Alternative: try to get from commits API
+                              commits_url = f"https://api.github.com/repos/{repo}/commits/{tag_name}"
+                              commits_response = requests.get(commits_url)
+                              if commits_response.status_code == 200:
+                                  commit_data = commits_response.json()
+                                  if "sha" in commit_data:
+                                      return commit_data["sha"][:7]
+
                       return None
 
                   def extract_base_version(version_string):
@@ -174,11 +202,11 @@ jobs:
               if: steps.check.outputs.has_updates == 'true' && github.event.inputs.update_charts == 'true'
               run: |
                   type -p curl >/dev/null || apt install curl -y
-                  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-                  chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-                  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-                  apt update
-                  apt install gh -y
+                  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+                  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+                  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+                  sudo apt update
+                  sudo apt install gh -y
 
             - name: Create update PR
               if: steps.check.outputs.has_updates == 'true' && github.event.inputs.update_charts == 'true'
@@ -233,13 +261,3 @@ jobs:
 
                   This PR was automatically created by the check-updates workflow." \
                     --base main
-
-            - name: Install GitHub CLI
-              if: steps.check.outputs.has_updates == 'true' && github.event.inputs.update_charts == 'true'
-              run: |
-                  type -p curl >/dev/null || apt install curl -y
-                  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-                  chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-                  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-                  apt update
-                  apt install gh -y
