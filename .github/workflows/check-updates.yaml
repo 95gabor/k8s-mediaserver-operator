@@ -36,6 +36,8 @@ jobs:
 
             - name: Check for updates
               id: check
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                   python << 'EOF'
                   import yaml
@@ -81,8 +83,9 @@ jobs:
                       },
                       "seerr": {
                           "repo": "seerr-team/seerr",
-                          "tag_format": "commit_hash",  # Uses commit hash like "sha-e842036"
-                          "docker_format": "commit_hash"
+                          "tag_format": "container_registry",  # Container images are built from CI commits, not release commits
+                          "docker_format": "commit_hash",
+                          "container_registry": "ghcr.io/seerr-team/seerr"  # Check container registry for actual tags
                       },
                       "transmission": {
                           "repo": "transmission/transmission",
@@ -141,6 +144,52 @@ jobs:
                           return ".".join(parts[:3])
                       return version_string
 
+                  def get_latest_container_tag(container_registry):
+                      """Get latest container image tag from GitHub Container Registry"""
+                      # GHCR API requires authentication, so we use the GitHub Packages API
+                      # Format: https://api.github.com/orgs/{org}/packages/container/{package}/versions
+                      if not container_registry:
+                          return None
+
+                      # Parse registry URL: ghcr.io/org/package -> org/package
+                      parts = container_registry.replace("ghcr.io/", "").split("/")
+                      if len(parts) != 2:
+                          return None
+
+                      org, package = parts
+
+                      # Get package versions from GitHub API (use GITHUB_TOKEN if available)
+                      url = f"https://api.github.com/orgs/{org}/packages/container/{package}/versions"
+                      headers = {"Accept": "application/vnd.github+json"}
+                      token = os.environ.get("GITHUB_TOKEN")
+                      if token:
+                          headers["Authorization"] = f"Bearer {token}"
+
+                      response = requests.get(url, headers=headers)
+
+                      if response.status_code == 200:
+                          versions = response.json()
+                          # Filter for tags that start with "sha-" and sort by updated_at
+                          sha_tags = []
+                          for version in versions:
+                              if "metadata" in version and "container" in version["metadata"]:
+                                  tags = version["metadata"]["container"].get("tags", [])
+                                  for tag in tags:
+                                      if tag.startswith("sha-"):
+                                          sha_tags.append({
+                                              "tag": tag,
+                                              "updated_at": version.get("updated_at", "")
+                                          })
+
+                          if sha_tags:
+                              # Sort by updated_at (most recent first)
+                              sha_tags.sort(key=lambda x: x["updated_at"], reverse=True)
+                              return sha_tags[0]["tag"]
+                      else:
+                          print(f"⚠️  Failed to fetch container tags: {response.status_code} - {response.text[:200]}")
+
+                      return None
+
                   for chart_name in chart_configs.keys():
                       chart_path = charts_dir / chart_name / "Chart.yaml"
                       if not chart_path.exists():
@@ -159,7 +208,15 @@ jobs:
                       latest_tag = release["tag_name"].lstrip("v")  # Remove 'v' prefix if present
 
                       # Format the version based on chart requirements
-                      if config["tag_format"] == "commit_hash":
+                      if config["tag_format"] == "container_registry":
+                          # For Seerr: Container images are built from CI commits, not release commits
+                          # Check the container registry for the latest available tag
+                          container_registry = config.get("container_registry")
+                          latest_version = get_latest_container_tag(container_registry)
+                          if not latest_version:
+                              print(f"⚠️  {chart_name}: Could not find container registry tags, skipping")
+                              continue
+                      elif config["tag_format"] == "commit_hash":
                           commit_hash = get_commit_hash_from_release(release)
                           if commit_hash:
                               latest_version = f"sha-{commit_hash}"
