@@ -1612,6 +1612,29 @@ entries:
     version: 0.1.1
   radarr:
   - apiVersion: v2
+    appVersion: 6.0.4
+    created: "2025-12-10T20:02:59.208978553Z"
+    description: A Helm chart for Radarr
+    digest: fb3a6d1141cf4539c92f0590e7f0df064487ab19193bb8a8082f197557e5e2e0
+    home: https://radarr.video/
+    icon: https://raw.githubusercontent.com/Radarr/Radarr/develop/Logo/256.png
+    keywords:
+    - radarr
+    - movies
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: radarr
+    sources:
+    - https://github.com/Radarr/Radarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/radarr-0.1.10/radarr-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
     appVersion: 6.0.4.10291
     created: "2025-12-10T19:46:04.800847153Z"
     description: A Helm chart for Radarr
@@ -1959,6 +1982,30 @@ entries:
     version: 0.1.1
   seerr:
   - apiVersion: v2
+    appVersion: sha-e842036
+    created: "2025-12-10T20:02:59.424600686Z"
+    description: A Helm chart for Seerr
+    digest: 56cac0798060472202530f6663e4596ca5b10b776effc6e5d7b4ef564f0f780c
+    home: https://github.com/seerr-team/seerr
+    icon: https://raw.githubusercontent.com/seerr-team/seerr/main/public/logo_full.svg
+    keywords:
+    - seerr
+    - media
+    - request
+    - discovery
+    - plex
+    - jellyfin
+    maintainers:
+    - name: 95gabor
+    name: seerr
+    sources:
+    - https://github.com/seerr-team/seerr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.10/seerr-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
     appVersion: 2.7.3
     created: "2025-12-10T19:46:04.956187446Z"
     description: A Helm chart for Seerr
@@ -2151,6 +2198,30 @@ entries:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/seerr-0.1.1.tgz
     version: 0.1.1
   sonarr:
+  - apiVersion: v2
+    appVersion: 4.0.16
+    created: "2025-12-10T20:02:59.689040418Z"
+    description: A Helm chart for Sonarr
+    digest: 5219b348f915514bfac152081c3662a3f4164928995d5ef0a61073e0db4b51d6
+    home: https://sonarr.tv/
+    icon: https://raw.githubusercontent.com/Sonarr/Sonarr/develop/Logo/256.png
+    keywords:
+    - sonarr
+    - tv
+    - series
+    - tracker
+    - media
+    - automation
+    maintainers:
+    - name: 95gabor
+    name: sonarr
+    sources:
+    - https://github.com/Sonarr/Sonarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/sonarr-0.1.10/sonarr-0.1.10.tgz
+    version: 0.1.10
   - apiVersion: v2
     appVersion: 4.0.16.2944
     created: "2025-12-10T19:46:05.11507182Z"
@@ -2528,4 +2599,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-10T19:49:17.615569427Z"
+generated: "2025-12-10T20:02:59.689252164Z"
