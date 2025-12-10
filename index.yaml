@@ -1494,6 +1494,29 @@ entries:
     version: 0.1.1
   prowlarr:
   - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-12-10T20:14:44.035126499Z"
+    description: A Helm chart for Prowlarr
+    digest: ed343ed517f0a7a927256d272b0ed848a11bb4e4a6ba8cf06dcf63c0ed3ea278
+    home: https://github.com/Prowlarr/Prowlarr
+    icon: https://raw.githubusercontent.com/Prowlarr/Prowlarr/develop/Logo/256.png
+    keywords:
+    - prowlarr
+    - indexer
+    - tracker
+    - pvr
+    - media
+    maintainers:
+    - name: 95gabor
+    name: prowlarr
+    sources:
+    - https://github.com/Prowlarr/Prowlarr
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/prowlarr-0.1.10/prowlarr-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
     appVersion: 2.3.0.5236
     created: "2025-12-10T19:46:04.675708013Z"
     description: A Helm chart for Prowlarr
@@ -2666,4 +2689,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-10T20:07:47.580313269Z"
+generated: "2025-12-10T20:14:44.035333987Z"
