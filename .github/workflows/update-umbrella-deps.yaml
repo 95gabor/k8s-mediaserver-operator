@@ -204,5 +204,3 @@ jobs:
           labels: |
             automated
             dependencies
-          path: |
-            charts/k8s-mediaserver/Chart.yaml
