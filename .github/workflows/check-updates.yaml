@@ -342,5 +342,3 @@ jobs:
           labels: |
             automated
             dependencies
-          path: |
-            charts/*/Chart.yaml
