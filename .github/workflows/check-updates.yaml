@@ -313,9 +313,7 @@ jobs:
 
             - name: Run pre-commit
               if: steps.check.outputs.has_updates == 'true'
-              run: |
-                  pip install pre-commit
-                  pre-commit run --all-files --hook-stage commit || true
+              uses: pre-commit/action@v3.0.1
 
             - name: Clean up temporary files
               if: steps.check.outputs.has_updates == 'true'
