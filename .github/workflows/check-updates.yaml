@@ -16,7 +16,7 @@ jobs:
     check-updates:
         runs-on: ubuntu-24.04
         permissions:
-            contents: read
+            contents: write
             pull-requests: write
 
         steps:
@@ -255,27 +255,9 @@ jobs:
                   echo "## Available Updates" >> $GITHUB_STEP_SUMMARY
                   cat updates.json | python -m json.tool >> $GITHUB_STEP_SUMMARY
 
-            - name: Install GitHub CLI
+            - name: Update chart versions
               if: steps.check.outputs.has_updates == 'true'
               run: |
-                  type -p curl >/dev/null || apt install curl -y
-                  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-                  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-                  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-                  sudo apt update
-                  sudo apt install gh -y
-
-            - name: Create update PR
-              if: steps.check.outputs.has_updates == 'true'
-              env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-
-                  BRANCH="update-app-versions-$(date +%Y%m%d)"
-                  git checkout -b "$BRANCH"
-
                   python << 'EOF'
                   import yaml
                   import json
@@ -303,18 +285,48 @@ jobs:
                       print(f"Updated {update['chart']}: {update['current']} -> {update['latest']}")
                   EOF
 
-                  git add charts/*/Chart.yaml
-                  git commit -m "chore: update app versions
+            - name: Prepare PR body and commit message
+              if: steps.check.outputs.has_updates == 'true'
+              id: pr_info
+              run: |
+                  python << 'EOF'
+                  import json
+                  import os
 
-                  $(cat updates.json | python -c "import sys, json; updates = json.load(sys.stdin); print('\n'.join([f'- {u[\"chart\"]}: {u[\"current\"]} -> {u[\"latest\"]}' for u in updates]))")"
+                  with open("updates.json", "r") as f:
+                      updates = json.load(f)
 
-                  git push origin "$BRANCH"
+                  # Generate commit message list
+                  commit_lines = []
+                  for update in updates:
+                      commit_lines.append(f"- {update['chart']}: {update['current']} -> {update['latest']}")
 
-                  gh pr create \
-                    --title "chore: update app versions" \
-                    --body "Automated update of application versions.
+                  # Generate PR body
+                  body_lines = ["Automated update of application versions.", ""]
+                  for update in updates:
+                      body_lines.append(f"- **{update['chart']}**: {update['current']} → {update['latest']} ([release]({update['release_url']}))")
+                  body_lines.append("")
+                  body_lines.append("This PR was automatically created by the check-updates workflow.")
 
-                  $(cat updates.json | python -c "import sys, json; updates = json.load(sys.stdin); print('\n'.join([f'- **{u[\"chart\"]}**: {u[\"current\"]} → {u[\"latest\"]} ([release]({u[\"release_url\"]}))' for u in updates]))")
+                  commit_msg = "chore: update app versions\n\n" + "\n".join(commit_lines)
+                  pr_body = "\n".join(body_lines)
 
-                  This PR was automatically created by the check-updates workflow." \
-                    --base main
+                  with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                      # Use EOF delimiter for multiline output
+                      f.write(f"commit_message<<EOF\n{commit_msg}\nEOF\n")
+                      f.write(f"pr_body<<EOF\n{pr_body}\nEOF\n")
+                  EOF
+
+            - name: Create Pull Request
+              if: steps.check.outputs.has_updates == 'true'
+              uses: peter-evans/create-pull-request@v8
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  commit-message: ${{ steps.pr_info.outputs.commit_message }}
+                  title: "chore: update app versions"
+                  body: ${{ steps.pr_info.outputs.pr_body }}
+                  branch: update-app-versions-${{ github.run_number }}
+                  delete-branch: true
+                  labels: |
+                      automated
+                      dependencies
