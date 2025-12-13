@@ -2,18 +2,18 @@ apiVersion: v2
 name: jackett
 description: A Helm chart for Jackett
 type: application
-version: 0.1.9
-appVersion: "0.24.429"
+version: 0.1.10
+appVersion: 0.24.445
 icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-logo.png
 home: https://github.com/Jackett/Jackett
 sources:
-  - https://github.com/Jackett/Jackett
-  - https://github.com/95gabor/k8s-mediaserver-charts
+- https://github.com/Jackett/Jackett
+- https://github.com/95gabor/k8s-mediaserver-charts
 keywords:
-  - jackett
-  - torrent
-  - tracker
-  - indexer
-  - media
+- jackett
+- torrent
+- tracker
+- indexer
+- media
 maintainers:
-  - name: 95gabor
+- name: 95gabor
