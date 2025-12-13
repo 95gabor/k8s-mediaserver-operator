@@ -311,14 +311,19 @@ jobs:
                       f.write(f"pr_body<<EOF\n{pr_body}\nEOF\n")
                   EOF
 
-            - name: Run pre-commit
-              if: steps.check.outputs.has_updates == 'true'
-              uses: pre-commit/action@v3.0.1
-
             - name: Clean up temporary files
               if: steps.check.outputs.has_updates == 'true'
               run: |
                   rm -f updates.json
+
+            - name: Run pre-commit
+              if: steps.check.outputs.has_updates == 'true'
+              uses: pre-commit/action@v3.0.1
+
+            - name: Set current date
+              if: steps.check.outputs.has_updates == 'true'
+              id: date
+              run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
             - name: Create Pull Request
               if: steps.check.outputs.has_updates == 'true'
@@ -326,9 +331,10 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   commit-message: ${{ steps.pr_info.outputs.commit_message }}
-                  title: "chore: update app versions"
+                  title: "chore: update app versions ${{ steps.date.outputs.date }}"
                   body: ${{ steps.pr_info.outputs.pr_body }}
-                  branch: update-app-versions-${{ github.run_number }}
+                  branch: bump/app-versions
+                  sign-commits: true
                   delete-branch: true
                   labels: |
                       automated
