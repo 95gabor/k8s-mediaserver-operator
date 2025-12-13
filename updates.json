@@ -1,0 +1,14 @@
+[
+  {
+    "chart": "jackett",
+    "current": "0.24.429",
+    "latest": "0.24.445",
+    "release_url": "https://github.com/Jackett/Jackett/releases/tag/v0.24.445"
+  },
+  {
+    "chart": "seerr",
+    "current": "sha-15356df",
+    "latest": "sha-539d498",
+    "release_url": "https://github.com/seerr-team/seerr/releases/tag/v2.7.3"
+  }
+]
