@@ -311,6 +311,17 @@ jobs:
                       f.write(f"pr_body<<EOF\n{pr_body}\nEOF\n")
                   EOF
 
+            - name: Run pre-commit
+              if: steps.check.outputs.has_updates == 'true'
+              run: |
+                  pip install pre-commit
+                  pre-commit run --all-files --hook-stage commit || true
+
+            - name: Clean up temporary files
+              if: steps.check.outputs.has_updates == 'true'
+              run: |
+                  rm -f updates.json
+
             - name: Create Pull Request
               if: steps.check.outputs.has_updates == 'true'
               uses: peter-evans/create-pull-request@v8
@@ -324,3 +335,5 @@ jobs:
                   labels: |
                       automated
                       dependencies
+                  path: |
+                      charts/*/Chart.yaml
