@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   jackett:
   - apiVersion: v2
+    appVersion: 0.24.478
+    created: "2025-12-18T09:08:23.558077426Z"
+    description: A Helm chart for Jackett
+    digest: bde1b92efe1db93fa3e0b6a8c9b42c327f68f18a8d83ae142a5ceed610029e83
+    home: https://github.com/Jackett/Jackett
+    icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-logo.png
+    keywords:
+    - jackett
+    - torrent
+    - tracker
+    - indexer
+    - media
+    maintainers:
+    - name: 95gabor
+    name: jackett
+    sources:
+    - https://github.com/Jackett/Jackett
+    - https://github.com/95gabor/k8s-mediaserver-charts
+    type: application
+    urls:
+    - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/jackett-0.1.12/jackett-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
     appVersion: 0.24.457
     created: "2025-12-17T06:18:40.205084781Z"
     description: A Helm chart for Jackett
@@ -3031,4 +3054,4 @@ entries:
     urls:
     - https://github.com/95gabor/k8s-mediaserver-charts/releases/download/transmission-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-17T06:21:45.354922048Z"
+generated: "2025-12-18T09:08:23.558318514Z"
